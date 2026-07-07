@@ -381,7 +381,7 @@ addEventListener("scroll", () => {
 
 /* ---------- Démo : vague + conversation séquencée ---------- */
 const CONVO = [["caller","Bonjour, je voudrais un rendez-vous, j'ai un peu de fièvre et mal à la gorge depuis hier soir."],["ai","Je comprends. Ce n'est pas une urgence vitale — je vérifie l'agenda… La Dre Mertens a une plage demain à 14h40. Je vous la réserve ?"],["caller","Oui parfait. Est-ce que je dois apporter quelque chose ?"],["ai","Juste votre carte d'identité. C'est noté : demain 14h40. Vous recevez la confirmation par SMS — et le cabinet a déjà la synthèse de votre appel."]];
-const VO_TIMES = [0.0, 9.05, 18.9, 22.99]; // départ de chaque réplique dans la VO (secondes)
+const VO_TIMES = [0.0, 5.0, 16.16, 19.48]; // départ de chaque réplique dans la VO (secondes)
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
 
