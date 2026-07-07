@@ -90,7 +90,7 @@
   /* ---------- Pages démo : mise en scène ---------- */
   const stage = document.querySelector(".demo-stage");
   if (stage) {
-    gsap.from(".demo-stage .phone-preview", { y: 40, opacity: 0, duration: 1.1, ease: "power3.out", delay: .2 });
+    gsap.from(".demo-visual", { y: 40, opacity: 0, duration: 1.1, ease: "power3.out", delay: .2 });
     gsap.from(".demo-side > *", { y: 26, opacity: 0, duration: .8, stagger: .09, ease: "power3.out", delay: .35 });
   }
   const cx = document.querySelector(".cx-grid");
