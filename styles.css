@@ -2613,3 +2613,26 @@ section.sec:has(.demo-stage) { padding: 0; }
   .demo-visual { min-height: 360px; }
   .demo-live.on .demo-visual { min-height: 600px; }
 }
+
+/* ============== Hero mobile : body avant les boutons + vidéo lisible ============== */
+@media (max-width: 900px) {
+  /* LE SERVICE (body) passe au-dessus des boutons */
+  .hero-foot { display: flex; flex-direction: column; }
+  .hero-foot > div:first-child { order: 2; }
+  .hero-foot .hero-side { order: 1; }
+
+  /* vidéo : zoom réduit et cadrage recentré pour qu'on la voie vraiment */
+  .hero-bg-stack .v-layer.show { transform: none; }
+  .hero-bg-stack video,
+  .hero-bg-stack img {
+    object-position: center 25%;
+    filter: brightness(.85) contrast(1.05) saturate(.98);
+  }
+  .hero-bg-overlay {
+    background:
+      linear-gradient(180deg,
+        rgba(11,11,11,.66) 0%,
+        rgba(11,11,11,.44) 45%,
+        rgba(11,11,11,.58) 100%);
+  }
+}
