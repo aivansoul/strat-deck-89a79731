@@ -1,0 +1,27 @@
+# Spit'Up — Télésecrétariat hybride IA + humain en Belgique
+
+> Spit'Up Call Solutions est une société belge fondée en 2017 à Charleroi (Rue de la Science 5, 6000 Charleroi, TVA BE 0679.618.028). Elle propose un télésecrétariat hybride : AlexIA, un agent vocal IA qui répond aux appels 24/7 en quatre langues (FR, NL, EN, DE), combiné à une équipe de secrétaires humaines salariées en Belgique qui reprennent les appels sensibles pendant la conversation, sans coupure. Note Google : 4,8/5 sur 22 avis publics. Clients notables : SD Worx, Tempo Team, Coface, Mensura.
+
+## Faits clés
+- Fondation : 2017, Charleroi (fondateur : Vincent Sancinito)
+- Modèle : IA (volume) + secrétaires humaines belges (nuance), bascule en direct pendant l'appel
+- Langues : français, néerlandais, anglais, allemand — détection automatique
+- Conformité : RGPD, hébergement européen, compatible exigences INAMI
+- Médecins généralistes : prime Impulseo III jusqu'à 4 820,16 €/an (Wallonie, 2026)
+- Mise en place : renvoi d'appel conditionnel, sans changer de numéro
+
+## Pages principales
+- https://alexia.spitup.be/ : Télésecrétariat IA en Belgique (pilier)
+- https://alexia.spitup.be/telesecretariat-medical.html : Télésecrétariat médical
+- https://alexia.spitup.be/demo-medical.html : Démo cabinet médical
+- https://alexia.spitup.be/demo-avocats.html : Démo avocats & notaires
+- https://alexia.spitup.be/demo-immobilier.html : Démo agences immobilières
+- https://alexia.spitup.be/demo-construction.html : Démo construction & artisans
+- https://alexia.spitup.be/demo-horeca.html : Démo restaurants
+- https://alexia.spitup.be/demo-automobile.html : Démo garages
+- https://alexia.spitup.be/telesecretariat-medical-guide-2026.html : Guide télésecrétariat médical 2026
+- https://alexia.spitup.be/ia-ou-secretaire-humaine.html : IA ou secrétaire humaine ?
+
+## Contact
+- Téléphone : +32 71 18 24 73
+- Devis : https://spitup.be/contactez-spitup/ (réponse en moins d'une heure ouvrée)

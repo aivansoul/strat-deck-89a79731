@@ -1,2 +1,20 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+# Crawlers IA bienvenus (GEO — citation dans les réponses génératives)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://alexia.spitup.be/sitemap.xml

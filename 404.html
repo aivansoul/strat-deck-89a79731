@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, follow"/>
+<title>Erreur 404 — Cette page ne décroche pas · SpitUP</title>
+<meta name="description" content="Page introuvable. Mais AlexIA, elle, répond toujours : +32 71 18 24 73."/>
+<link rel="icon" href="assets/logo-d.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  /* Page 404 autonome — aucune dépendance : elle doit survivre à tout. */
+  :root {
+    --ink: #0B0B0B; --ink-2: #3D3A34; --mute: #8A857B;
+    --gold: #B08D57; --gold-2: #CBA96B; --gold-deep: #8E6F3F;
+    --bg: #F7F4ED; --panel: #EFEBE0; --line: #DDD6C6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Poppins", system-ui, sans-serif;
+    background: var(--bg); color: var(--ink);
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+  a { color: inherit; text-decoration: none; }
+  .nav404 {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px clamp(20px, 4vw, 48px);
+  }
+  .nav404 img { height: 34px; width: auto; display: block; }
+  .nav404 .tel {
+    font-family: "JetBrains Mono", monospace; font-size: 13px;
+    letter-spacing: .08em; color: var(--ink-2);
+  }
+  .nav404 .tel:hover { color: var(--gold-deep); }
+  .wrap {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 40px 20px 70px;
+  }
+  .code {
+    display: flex; align-items: center; gap: clamp(8px, 2vw, 18px);
+    font-weight: 700; font-size: clamp(88px, 17vw, 180px);
+    line-height: 1; letter-spacing: -0.04em;
+  }
+  .code .mic0 {
+    position: relative;
+    width: clamp(72px, 14vw, 148px); height: clamp(72px, 14vw, 148px);
+    border-radius: 50%;
+    background: var(--gold);
+    display: grid; place-items: center;
+    box-shadow: 0 30px 60px -24px rgba(142,111,63,.55);
+  }
+  .code .mic0 svg { width: 38%; height: 38%; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; }
+  .code .mic0 .ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px solid rgba(176,141,87,.55);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  .code .mic0 .r2 { animation-delay: 1.2s; }
+  @keyframes pulse { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(2); opacity: 0; } }
+  .ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 64px; }
+  .btn404 {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 17px 30px; border-radius: 17px;
+    font-size: 15px; font-weight: 600;
+    transition: transform .3s cubic-bezier(.3,.7,.3,1), background .3s, color .3s, box-shadow .3s;
+  }
+  .btn404:hover { transform: translateY(-2px); }
+  .b-gold { background: var(--gold); color: #fff; }
+  .b-gold:hover { background: var(--gold-deep); box-shadow: 0 16px 34px -14px rgba(142,111,63,.6); }
+  .b-white { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+  .b-white:hover { border-color: var(--gold); color: var(--gold-deep); }
+  .foot404 {
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--mute); text-align: center;
+    padding: 26px 20px 30px; line-height: 1.8;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .code .mic0 .ring { animation: none; opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav404">
+  <a href="telesecretariat-ia.html" aria-label="Retour à l'accueil SpitUP">
+    <img src="assets/logo-wordmark-dark.png" alt="SpitUP — Call Solutions"
+         onerror="this.outerHTML='<strong style=&quot;letter-spacing:.06em&quot;>SPIT<span style=&quot;color:#B08D57&quot;>UP</span></strong>'"/>
+  </a>
+  <a class="tel" href="tel:+3271182473">+32 71 18 24 73</a>
+</header>
+
+<main class="wrap">
+  <div class="code" aria-label="Erreur 404">
+    <span>4</span>
+    <span class="mic0" aria-hidden="true">
+      <span class="ring"></span><span class="ring r2"></span>
+      <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>
+    </span>
+    <span>4</span>
+  </div>
+
+  <div class="ctas">
+    <a class="btn404 b-gold" href="tel:+3271182473">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2L8 9.6a16 16 0 0 0 6.4 6.4l1.2-1.2a2 2 0 0 1 2-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+      Appeler SpitUP
+    </a>
+    <a class="btn404 b-white" href="telesecretariat-ia.html">Retour à l'accueil</a>
+  </div>
+</main>
+
+<footer class="foot404">
+  SpitUP · Charleroi · Le seul appel que nous ne prendrons jamais : celui de cette page.
+</footer>
+
+</body>
+</html>

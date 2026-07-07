@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Spit'Up × Banana Navy — Préparation kick-off</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f4ed;--panel:#fffdf9;--ink:#1a1916;--ink-2:#403d36;--muted:#75716a;
+    --line:#e6e1d5;--line-2:#efeae0;--gold:#a8823f;--gold-deep:#8a6a31;--gold-soft:#f1e7d2;
+    --rail:#1f1d19;--rail-ink:#cfc8b8;--rail-active:#f3ecdb;
+    --red:#a23b2e;--red-soft:#f6e3df;--green:#3f6b4f;--green-soft:#e3efe6;--blue:#2f5570;--blue-soft:#e2ecf2;
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;font-size:15px}
+  .app{display:grid;grid-template-columns:268px 1fr;min-height:100vh}
+
+  /* sidebar */
+  .rail{background:var(--rail);color:var(--rail-ink);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:26px 18px;z-index:30;overflow-y:auto}
+  .rail .logo{display:flex;align-items:center;gap:10px;padding:0 8px 22px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:16px}
+  .rail .logo .mark{width:30px;height:30px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex:none}
+  .rail .logo .mark svg{width:17px;height:17px}
+  .rail .logo b{font-size:13px;letter-spacing:.16em;color:#fff;font-weight:600;text-transform:uppercase;line-height:1.3}
+  .rail .logo small{display:block;font-size:10px;letter-spacing:.18em;color:var(--gold);font-weight:500;margin-top:2px}
+  .rail .grp{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6f695b;padding:14px 12px 8px;font-weight:600}
+  .navbtn{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:none;color:var(--rail-ink);font-family:inherit;font-size:13.5px;padding:9px 12px;border-radius:9px;cursor:pointer;transition:background .18s,color .18s;line-height:1.25}
+  .navbtn:hover{background:rgba(255,255,255,.05);color:#fff}
+  .navbtn.active{background:var(--rail-active);color:var(--rail);font-weight:600}
+  .navbtn .ix{font-variant-numeric:tabular-nums;font-size:11px;color:#6f695b;width:14px;flex:none}
+  .navbtn.active .ix{color:var(--gold-deep)}
+  .navbtn .dot{width:7px;height:7px;border-radius:50%;flex:none;margin-left:auto}
+  .dot.r{background:var(--red)}.dot.g{background:var(--gold)}
+  .rail .foot{margin-top:auto;padding:16px 12px 4px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#6f695b;line-height:1.6}
+
+  .main{min-width:0;display:flex;flex-direction:column}
+  .topbar{position:sticky;top:0;z-index:40;background:rgba(247,244,237,.85);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .topbar .crumb{font-size:12px;letter-spacing:.06em;color:var(--muted)}
+  .topbar .crumb b{color:var(--ink);font-weight:600}
+  .pager{display:flex;gap:8px}
+  .pager button{width:34px;height:34px;border:1px solid var(--line);background:var(--panel);border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-2);transition:.18s}
+  .pager button:hover{border-color:var(--gold);color:var(--gold-deep)}
+  .pager button:disabled{opacity:.35;cursor:not-allowed}
+  .pager button svg{width:16px;height:16px}
+
+  .view{padding:40px 40px 80px;max-width:1120px;width:100%;margin:0 auto;display:none;animation:fade .35s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:12px}
+  h1.title{font-size:clamp(30px,4vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+  h2.h{font-size:clamp(22px,2.4vw,30px);line-height:1.12;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .sub{font-size:16px;color:var(--muted);max-width:780px;margin-bottom:24px}
+  h3{font-size:15.5px;font-weight:600;margin-bottom:6px}
+  strong{color:var(--ink);font-weight:600}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .section-head .n{font-size:54px;color:var(--gold-soft);line-height:.8;font-weight:800;flex:none}
+
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+  .card .tag{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:10px;display:block}
+  .card p{font-size:14px;color:var(--ink-2);line-height:1.5}
+  .card.accent{background:linear-gradient(160deg,#fffdf9,#f7efde);border-color:var(--gold-soft)}
+
+  .li{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--line-2);font-size:14px;color:var(--ink-2);line-height:1.45}
+  .li:last-child{border-bottom:none}
+  .li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:8px}
+
+  .pri{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+  .pri.crit{background:var(--red-soft);color:var(--red)}
+  .pri.imp{background:var(--gold-soft);color:var(--gold-deep)}
+  .pri.info{background:var(--blue-soft);color:var(--blue)}
+
+  /* item blocks (clarify / question / forgot) */
+  .block{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-bottom:12px;border-left:3px solid var(--gold)}
+  .block.crit{border-left-color:var(--red)}
+  .block.imp{border-left-color:var(--gold)}
+  .block .bh{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .block .bh h3{margin:0;font-size:16px}
+  .block .said{font-size:13px;color:var(--muted);font-style:italic;margin:6px 0 10px;padding:8px 12px;background:#faf6ee;border-radius:8px;border:1px dashed var(--line)}
+  .block .why{font-size:14px;color:var(--ink-2);line-height:1.55}
+  .block .ask{font-size:13.5px;color:var(--ink);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2);display:flex;gap:8px}
+  .block .ask svg{width:15px;height:15px;flex:none;color:var(--gold-deep);margin-top:3px}
+  .block .ask b{color:var(--gold-deep);font-weight:600}
+
+  .quote{background:linear-gradient(160deg,#fffdf9,#f6eedb);border:1px solid var(--gold-soft);border-radius:var(--r);padding:24px 26px;margin-bottom:20px}
+  .quote p{font-size:clamp(17px,1.8vw,21px);line-height:1.4;color:var(--ink);font-weight:600}
+  .quote span{display:block;margin-top:12px;font-size:12px;color:var(--muted);letter-spacing:.04em;font-weight:400}
+
+  .pitch p{font-size:16px;color:var(--ink-2);line-height:1.7;margin-bottom:16px;max-width:820px}
+  .pitch p strong{color:var(--ink)}
+  .pitch .beat{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+  .pitch .beat .b{width:26px;height:26px;border-radius:7px;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none;margin-top:2px}
+
+  /* interactive checklist */
+  .progress{display:flex;align-items:center;gap:14px;margin-bottom:20px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .progress .bar{flex:1;height:8px;background:var(--line-2);border-radius:999px;overflow:hidden}
+  .progress .bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+  .progress .pct{font-size:13px;font-weight:600;color:var(--gold-deep);font-variant-numeric:tabular-nums;min-width:96px;text-align:right}
+  .checkgrp{margin-bottom:22px}
+  .checkgrp>h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+  .checkgrp>h3::after{content:"";flex:1;height:1px;background:var(--line)}
+  .ck{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin-bottom:7px;cursor:pointer;transition:.15s;user-select:none}
+  .ck:hover{border-color:var(--gold-soft)}
+  .ck .box{width:20px;height:20px;border:1.8px solid var(--gold);border-radius:6px;flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:.15s}
+  .ck .box svg{width:13px;height:13px;color:#fff;opacity:0;transition:.15s}
+  .ck.done .box{background:var(--gold);border-color:var(--gold)}
+  .ck.done .box svg{opacity:1}
+  .ck .txt{font-size:14px;color:var(--ink-2);line-height:1.45}
+  .ck.done .txt{color:var(--muted);text-decoration:line-through}
+  .ck-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:14px;align-items:stretch;margin-bottom:8px}
+  .ck-row .ck{margin-bottom:0;height:100%}
+  .note{font-family:inherit;font-size:13.5px;color:var(--ink);background:#fffdf9;border:1px solid var(--line);border-radius:10px;padding:11px 13px;resize:vertical;min-height:48px;line-height:1.5;width:100%;transition:border-color .15s}
+  .note:focus{outline:none;border-color:var(--gold);background:#fff}
+  .note::placeholder{color:#c1baaa}
+  @media(max-width:760px){.ck-row{grid-template-columns:1fr;gap:6px}}
+  @media print{.note{border:none;border-bottom:1px solid #ccc;border-radius:0;min-height:44px}}
+
+  .note{font-size:12.5px;color:var(--muted);margin-top:16px;display:flex;gap:8px;align-items:flex-start}
+  .note svg{width:15px;height:15px;flex:none;margin-top:2px;color:var(--gold)}
+
+  .cover{min-height:calc(100vh-110px);display:flex;flex-direction:column;justify-content:center}
+  .cover .big{font-size:clamp(40px,6.5vw,84px);line-height:.98;font-weight:800;letter-spacing:-.03em;margin:8px 0 22px}
+  .cover .big em{font-style:italic;color:var(--gold-deep)}
+  .cover .lead{font-size:18px;color:var(--muted);max-width:680px}
+  .cover .meta{display:flex;gap:36px;flex-wrap:wrap;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+  .cover .meta span{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .cover .meta b{font-size:15px}
+
+  @media(max-width:980px){
+    .app{grid-template-columns:1fr}
+    .rail{position:fixed;left:0;top:0;width:80%;max-width:300px;transform:translateX(-105%);transition:transform .25s;box-shadow:0 0 60px rgba(0,0,0,.3)}
+    .rail.open{transform:none}
+    .topbar{padding:12px 18px}.view{padding:26px 18px 60px}
+    .g2,.g3{grid-template-columns:1fr}
+    .burger{display:flex!important}.scrim.show{display:block}
+  }
+  .burger{display:none;width:36px;height:36px;border:1px solid var(--line);background:var(--panel);border-radius:9px;align-items:center;justify-content:center;cursor:pointer}
+  .burger svg{width:18px;height:18px}
+  .scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25}
+  @media print{.rail,.topbar{display:none}.view{display:block!important;page-break-after:always;max-width:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail" id="rail">
+    <div class="logo">
+      <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1916" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
+      <div><b>Banana Navy</b><small>Kick-off · Spit'Up</small></div>
+    </div>
+    <div class="grp">Préparation réunion</div>
+    <button class="navbtn active" data-view="cover"><span class="ix">00</span>Couverture</button>
+    <button class="navbtn" data-view="pitch"><span class="ix">01</span>Le pitch d'ouverture</button>
+    <button class="navbtn" data-view="avant"><span class="ix">02</span>À mettre en avant</button>
+    <button class="navbtn" data-view="clarifier"><span class="ix">03</span>À clarifier<span class="dot r"></span></button>
+    <button class="navbtn" data-view="questionner"><span class="ix">04</span>À remettre en question<span class="dot r"></span></button>
+    <button class="navbtn" data-view="oublie"><span class="ix">05</span>Ce qu'on a oublié<span class="dot g"></span></button>
+    <button class="navbtn" data-view="remarques"><span class="ix">06</span>Remarques &amp; posture</button>
+    <button class="navbtn" data-view="roadmap"><span class="ix">07</span>Cadrage projet</button>
+    <button class="navbtn" data-view="checklist"><span class="ix">08</span>Checklist questions</button>
+    <div class="foot">Document interne · à utiliser pendant le call<br>Réunion kick-off · 16/06/2026</div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <main class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="burger" id="burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <div class="crumb">Kick-off Spit'Up &nbsp;/&nbsp; <b id="crumb">Couverture</b></div>
+      </div>
+      <div class="pager">
+        <button id="prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button id="next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- COVER -->
+    <section class="view active" data-view="cover">
+      <div class="cover">
+        <div class="eyebrow">Préparation rendez-vous client</div>
+        <h1 class="big">Kick-off<br><em>Spit'Up.</em></h1>
+        <p class="lead">Tout ce qu'il faut pour mener le rendez-vous : le pitch, ce qu'on met en avant, ce qui reste flou, ce qu'on doit oser challenger, et nos angles morts.</p>
+        <div class="meta">
+          <div><span>Client</span><b>Vincent Sancinito · Spit'Up</b></div>
+          <div><span>Agence</span><b>Banana Navy</b></div>
+          <div><span>Base</span><b>Synthèse questionnaire (12/06)</b></div>
+          <div><span>Objet</span><b>Cadrage site · landing · acquisition</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PITCH -->
+    <section class="view" data-view="pitch">
+      <div class="section-head"><div><div class="eyebrow">Ouverture</div><h2 class="h">Le pitch d'ouverture</h2></div><div class="n">01</div></div>
+      <p class="sub">L'objectif des 5 premières minutes : lui montrer qu'on a compris sa vision mieux que lui ne l'a formulée, et lui donner envie de nous suivre. On reflète sa pensée, puis on prend le lead.</p>
+      <div class="quote">
+        <p>« Vincent, votre force n'est pas de prendre des appels — c'est de garantir qu'aucune opportunité ne tombe à l'eau, avec le bon équilibre entre l'humain et l'IA, et toujours sous le contrôle de votre client. C'est exactement ce qu'on va rendre évident en ligne. »</p>
+        <span>Phrase d'accroche suggérée</span>
+      </div>
+      <div class="pitch">
+        <div class="beat"><div class="b">1</div><p><strong>On reformule sa promesse.</strong> « Aucun appel utile perdu » + « le meilleur des deux mondes : secrétaires humaines expérimentées, appuyées par un voicebot bâti sur leur expertise ». C'est sa phrase, on la lui rend, propre et structurée.</p></div>
+        <div class="beat"><div class="b">2</div><p><strong>On nomme le différenciateur.</strong> Le curseur humain ↔ IA réglable par le client (control panel) : ni call center impersonnel, ni bot froid. C'est le cœur du site, le geste qu'aucun concurrent ne raconte aussi clairement.</p></div>
+        <div class="beat"><div class="b">3</div><p><strong>On rassure.</strong> Belge, humain, jamais d'avis médical ou juridique, données standardisées et cadrées. Le sérieux comme argument premium, pas comme contrainte.</p></div>
+        <div class="beat"><div class="b">4</div><p><strong>On projette le ROI.</strong> Décliné par métier : un mandat sauvé en immo, du temps facturable protégé chez l'avocat, des RDV sécurisés en médical. Concret, chiffrable, par vertical.</p></div>
+        <div class="beat"><div class="b">5</div><p><strong>On prend le lead.</strong> « Voici ce qu'on recommande de construire, dans quel ordre, et ce dont on a besoin de vous. » On passe de l'écoute à la direction de projet.</p></div>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Ton : premium et confiant. Il nous délègue beaucoup (« ce que vous jugerez bon ») — c'est une invitation à diriger, pas à attendre ses consignes.</div>
+    </section>
+
+    <!-- À METTRE EN AVANT -->
+    <section class="view" data-view="avant">
+      <div class="section-head"><div><div class="eyebrow">Nos points forts à valoriser</div><h2 class="h">À mettre en avant</h2></div><div class="n">02</div></div>
+      <p class="sub">Ce qu'on doit absolument souligner pour ancrer notre valeur et l'orientation stratégique.</p>
+      <div class="grid g2">
+        <div class="card accent"><span class="tag">Différenciateur n°1</span><h3>Le curseur humain ↔ IA</h3><p>On transforme son control panel en argument central et visuel du site. Personne sur son marché ne raconte aussi clairement « vous choisissez le niveau d'automatisation ».</p></div>
+        <div class="card accent"><span class="tag">Reframe stratégique</span><h3>La standardisation = scalabilité</h3><p>On présente sa contrainte opérationnelle comme une force : un service cadré, fiable, qui tient à l'échelle — et l'IA pour la profondeur spécifique.</p></div>
+        <div class="card"><span class="tag">Réassurance</span><h3>Belge · humain · jamais d'avis</h3><p>Visages de l'équipe, ancrage belge, règle stricte « aucun avis ». Le sérieux qui justifie le positionnement premium.</p></div>
+        <div class="card"><span class="tag">Lisibilité</span><h3>ROI par vertical</h3><p>On vend un bénéfice métier, pas une techno. Une promesse différente pour médical, avocats, immo, garages.</p></div>
+        <div class="card"><span class="tag">Couverture</span><h3>IA multilingue 24/7 = national</h3><p>Humain FR en heures ouvrables (Wallonie + BXL), IA FR/EN/NL 24/7 sur toute la Belgique. L'IA est le levier d'expansion.</p></div>
+        <div class="card"><span class="tag">Méthode</span><h3>On séquence les verticales</h3><p>Médical d'abord (crédibilité acquise), puis avocats, immo, garages. On évite de tout lancer en même temps.</p></div>
+      </div>
+    </section>
+
+    <!-- À CLARIFIER -->
+    <section class="view" data-view="clarifier">
+      <div class="section-head"><div><div class="eyebrow">Trous dans le questionnaire</div><h2 class="h">À clarifier absolument</h2></div><div class="n">03</div></div>
+      <p class="sub">Des pans entiers du questionnaire sont restés vides. Sans ces réponses, on ne peut pas produire un site complet ni une landing qui convertit.</p>
+
+      <div class="block crit">
+        <div class="bh"><span class="pri crit">Critique</span><h3>Tarification — totalement absente</h3></div>
+        <div class="why">Toute la section « Tarification & marge » est vide : formules, frais d'installation, limites par formule, offre d'essai, panier moyen, services les plus margés. Impossible de construire une page tarifs ou d'orienter les CTA sans ça.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Demander :</b> affiche-t-on les prix ou « sur devis » ? Y a-t-il une offre de lancement / un essai ? Quels services veut-on pousser car les plus rentables ?</span></div>
+      </div>
+
+      <div class="block crit">
+        <div class="bh"><span class="pri crit">Critique</span><h3>Preuves &amp; crédibilité — quasi vides</h3></div>
+        <div class="why">Sa propre stratégie dit « montrer les avis, les chiffres, les études de cas »… mais il n'a fourni aucun témoignage, logo, chiffre public ni cas. La seule réponse sur les garanties était « kkkk ». Un positionnement premium sans preuve ne tient pas.</div>
+        <div class="said">« kkkk » — réponse sur les garanties/engagements qualité</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Demander :</b> combien de clients ? Depuis quand ? Témoignages utilisables ? Logos autorisés ? Chiffres communicables (appels traités, taux de réponse) ? Garanties réelles ?</span></div>
+      </div>
+
+      <div class="block imp">
+        <div class="bh"><span class="pri imp">Important</span><h3>Médical — référence affichée, détail manquant</h3></div>
+        <div class="why">Il met le médical n°1 et cite Impulseo III &amp; MediVoice, mais la section médicale du questionnaire est vide : mécanique d'Impulseo III, logiciels compatibles, gestion des urgences, coût net, arguments qui rassurent. C'est notre verticale d'entrée, on doit la maîtriser.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Demander :</b> comment expliquer Impulseo III simplement ? Coût net après aide ? Quels agendas/logiciels au-delà d'Ubicentrex et myconsultation ?</span></div>
+      </div>
+
+      <div class="block imp">
+        <div class="bh"><span class="pri imp">Important</span><h3>Garages &amp; Construction — priorités sans contenu</h3></div>
+        <div class="why">Cités dans les secteurs à développer et la liste de priorités, mais zéro réponse métier (à l'inverse d'avocats et immo, bien renseignés). On ne peut pas écrire ces pages ni les FAQ sans matière.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Demander :</b> sont-ils vraiment au scope du lancement, ou phase 2 ? Si oui, mêmes questions que pour avocats/immo (appels types, infos à collecter, promesse).</span></div>
+      </div>
+
+      <div class="block imp">
+        <div class="bh"><span class="pri imp">Important</span><h3>Intégrations &amp; périmètre technique</h3></div>
+        <div class="why">Aujourd'hui : Ubicentrex, myconsultation, WhatsApp, SMS, mail. Pour avocats/immo, il parle d'« agenda partagé » et de CRM « via IA » — sans nommer les outils. On a besoin de la liste réelle à connecter.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Demander :</b> quels agendas/CRM côté immo et avocats ? La langue NL de l'IA est-elle prête aujourd'hui ou sur la roadmap ?</span></div>
+      </div>
+    </section>
+
+    <!-- À REMETTRE EN QUESTION -->
+    <section class="view" data-view="questionner">
+      <div class="section-head"><div><div class="eyebrow">Le plus important</div><h2 class="h">À remettre en question</h2></div><div class="n">04</div></div>
+      <p class="sub">Ce que Vincent a dit qui n'est pas tout à fait juste, ou risqué pour le projet. À aborder avec tact mais sans le contourner — c'est là qu'on apporte le plus de valeur.</p>
+
+      <div class="block crit">
+        <div class="bh"><span class="pri crit">Angle mort</span><h3>Le backup humain : la faille du modèle hybride à l'échelle</h3></div>
+        <div class="said">Humains : FR uniquement, 8h–18h ouvrables, Wallonie + BXL. IA : FR/EN/NL, 24/7, toute la Belgique. Transfert temps réel vers un humain « déjà le cas en médical ».</div>
+        <div class="why">Le « meilleur des deux mondes » suppose qu'un humain puisse reprendre la main. Or ce backup vivant n'existe que dans une case étroite — FR, en journée, en médical. Trois trous, jamais abordés :
+          <br>&bull; <b>Langue :</b> l'IA prend des appels NL/EN, mais aucun humain ne parle NL/EN → en Flandre, le service est en réalité 100% bot, sans filet.
+          <br>&bull; <b>Horaire :</b> l'IA tourne 24/7, l'humain s'arrête à 18h → la nuit et le week-end, même en FR, aucune reprise humaine possible.
+          <br>&bull; <b>Verticale &amp; échelle :</b> le transfert n'est confirmé qu'en médical. Pour avocats, immo, garages, l'humain (standardisé, peu nombreux, sans connaissance métier) pourra-t-il vraiment servir de backup quand on vendra en volume ?</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Question :</b> que se passe-t-il quand l'IA doit escalader un appel NL, un appel à 22h, ou un dossier avocat complexe ? S'il n'y a pas de backup vivant : on le vend honnêtement (full IA = sans humain) et on met l'équipe NL + le transfert multi-vertical en roadmap ?</span></div>
+      </div>
+
+      <div class="block crit">
+        <div class="bh"><span class="pri crit">Challenger</span><h3>« On ne survend pas l'IA » vs « aucun appel perdu »</h3></div>
+        <div class="said">L'IA « qualifie selon un script » et « répond aux FAQ » → « le but à terme ». Mais la promesse hero est « chaque appel traité, aucun appel perdu ».</div>
+        <div class="why">Risque n°1 : l'écart promesse / capacité réelle. Aujourd'hui l'IA traite, fixe un RDV et transfère ; la qualification fine et les FAQ ne sont pas encore là. Promettre « tout, tout de suite » crée de la déception et abîme la confiance. On aligne le discours sur ce qui est livrable maintenant, et on présente le reste comme roadmap.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Question :</b> qu'est-ce qui est vraiment opérationnel aujourd'hui, métier par métier, pour ne promettre que ce qu'on tient ?</span></div>
+      </div>
+
+      <div class="block crit">
+        <div class="bh"><span class="pri crit">Challenger</span><h3>« Démo AlexIA » en CTA principal</h3></div>
+        <div class="said">CTA prioritaires : demande de devis + démo AlexIA.</div>
+        <div class="why">Une démo IA en CTA n°1 n'a de sens que si elle est bluffante et stable. Si les capacités sont « à terme », une démo décevante coûte plus qu'elle ne rapporte. À vérifier avant d'en faire un pilier de conversion.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Question :</b> la démo est-elle prête, fiable, impressionnante ? Sinon, on la garde en secondaire et on pousse le devis.</span></div>
+      </div>
+
+      <div class="block imp">
+        <div class="bh"><span class="pri imp">Challenger</span><h3>« Tous types, pas de distinction » (avocats &amp; immo)</h3></div>
+        <div class="said">Avocats : « tous types, pas de distinction » ; immo : agences + syndics, tous profils.</div>
+        <div class="why">Cibler tout le monde affaiblit le message premium. Un positionnement haut de gamme suppose un client idéal défini. On peut accueillir large, mais la communication doit parler à un profil précis par vertical, sinon elle ne résonne avec personne.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Question :</b> pour chaque vertical, quel est le client idéal (taille, récurrence) à qui on parle en premier ?</span></div>
+      </div>
+
+      <div class="block imp">
+        <div class="bh"><span class="pri imp">Challenger</span><h3>« Aucun secteur, aucune zone à éviter » + 4 secteurs « absolument » en 2026</h3></div>
+        <div class="said">« À priori aucun secteur à éviter » et vouloir développer médical, avocats, immo, garages la même année.</div>
+        <div class="why">Tout faire à la fois dilue les ressources et la qualité. Sa propre liste de priorités est bonne — mais elle contredit le « tout développer ». On défend le focus : profondeur sur 1-2 verticales au lancement, le reste en vagues.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Question :</b> si on doit réussir parfaitement 2 verticales d'abord, lesquelles ? (reco : médical + immo, ROI le plus lisible)</span></div>
+      </div>
+
+      <div class="block imp">
+        <div class="bh"><span class="pri imp">Challenger</span><h3>« Premium » — affirmé, pas encore prouvé</h3></div>
+        <div class="said">Ton souhaité : « certainement premium ».</div>
+        <div class="why">Le premium se prouve (preuves sociales, design, soin, contenu), il ne se déclare pas. Aujourd'hui il manque les preuves et les assets pour le soutenir. Le premium est un objectif qu'on construit ensemble, pas un acquis.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Question :</b> est-il prêt à fournir preuves, visuels de qualité et budget design à la hauteur du premium visé ?</span></div>
+      </div>
+
+      <div class="block imp">
+        <div class="bh"><span class="pri imp">À cadrer</span><h3>Télémarketing 360° &amp; revente automation Banana</h3></div>
+        <div class="said">Télémarketing : « réflexion quant au maintien ou non ». Support admin : « piste : devenir revendeur d'automation par Banana ».</div>
+        <div class="why">Ce sont des réflexions à voix haute, pas des décisions. Deux risques : (1) construire des pages pour une offre qui n'existera peut-être pas ; (2) la revente automation est une vraie opportunité commerciale pour nous, mais c'est un chantier séparé — à ne pas mélanger au scope site/landing.</div>
+        <div class="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span><b>Question :</b> le télémarketing entre-t-il dans ce site, oui/non ? Et : ouvre-t-on une discussion dédiée sur l'automation Banana ?</span></div>
+      </div>
+    </section>
+
+    <!-- CE QU'ON A OUBLIÉ -->
+    <section class="view" data-view="oublie">
+      <div class="section-head"><div><div class="eyebrow">Nos angles morts</div><h2 class="h">Ce qu'on a oublié</h2></div><div class="n">05</div></div>
+      <p class="sub">Sujets absents du questionnaire et de la synthèse, mais indispensables avant de coder quoi que ce soit. À poser nous-mêmes — sinon ça revient comme un boomerang en cours de projet.</p>
+      <div class="grid g2">
+        <div class="block crit" style="margin:0">
+          <div class="bh"><span class="pri crit">Critique</span><h3>RGPD &amp; données sensibles</h3></div>
+          <div class="why">Médical (données de santé) et juridique = données ultra-sensibles. Où sont hébergées les données ? En Belgique/UE ? Secret médical, consentement, durée de conservation ? Indispensable, surtout pour vendre du premium rassurant.</div>
+        </div>
+        <div class="block crit" style="margin:0">
+          <div class="bh"><span class="pri crit">Critique</span><h3>Budget &amp; périmètre</h3></div>
+          <div class="why">Aucun budget ni scope chiffré évoqué. Le kick-off doit poser : enveloppe, ce qui est inclus en v1, ce qui est en option/phase 2. Évite le scope creep.</div>
+        </div>
+        <div class="block imp" style="margin:0">
+          <div class="bh"><span class="pri imp">Important</span><h3>Timeline &amp; jalons</h3></div>
+          <div class="why">Date de mise en ligne visée ? Y a-t-il un événement, une campagne, une saisonnalité ? On cale des jalons (maquettes, contenu, dev, recette, lancement).</div>
+        </div>
+        <div class="block imp" style="margin:0">
+          <div class="bh"><span class="pri imp">Important</span><h3>KPIs &amp; définition du succès</h3></div>
+          <div class="why">Le projet réussit si… quoi ? Nombre de demandes de devis, démos, leads qualifiés, trafic ? Sans cible, pas d'arbitrage ni de preuve de notre valeur.</div>
+        </div>
+        <div class="block imp" style="margin:0">
+          <div class="bh"><span class="pri imp">Important</span><h3>Routing des leads</h3></div>
+          <div class="why">Une demande de devis ou de démo arrive → elle va où ? Mail, CRM, qui répond, en combien de temps ? Le meilleur site est inutile si les leads tombent dans le vide.</div>
+        </div>
+        <div class="block imp" style="margin:0">
+          <div class="bh"><span class="pri imp">Important</span><h3>Assets &amp; contenu</h3></div>
+          <div class="why">Logo vectoriel, charte, photos équipe HD, vidéos, textes par vertical, validation des FAQ. Qui produit quoi, et pour quand ? Souvent le vrai goulot d'étranglement.</div>
+        </div>
+        <div class="block" style="margin:0">
+          <div class="bh"><span class="pri info">À noter</span><h3>Existant technique</h3></div>
+          <div class="why">Quel est le site actuel (CMS, hébergeur, domaine) ? Refonte sur place ou nouveau socle ? Reprise du SEO existant, redirections à prévoir.</div>
+        </div>
+        <div class="block" style="margin:0">
+          <div class="bh"><span class="pri info">À noter</span><h3>Légal &amp; analytics</h3></div>
+          <div class="why">Mentions légales, CGV, politique de confidentialité, cookies. Et le tracking (analytics, conversions) à brancher dès le départ pour mesurer.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REMARQUES -->
+    <section class="view" data-view="remarques">
+      <div class="section-head"><div><div class="eyebrow">Lecture de la relation</div><h2 class="h">Remarques &amp; posture</h2></div><div class="n">06</div></div>
+      <p class="sub">Comment se comporter avec Vincent pour que le call soit efficace et qu'on garde la main sur le projet.</p>
+      <div class="grid g2">
+        <div class="card"><span class="tag">Posture</span><h3>Diriger, pas exécuter</h3><p>Il délègue (« ce que vous jugerez bon d'utiliser »). C'est une marque de confiance : on arrive avec des recommandations fermes, pas des questions ouvertes en boucle.</p></div>
+        <div class="card"><span class="tag">Décisions</span><h3>Forcer les arbitrages</h3><p>Beaucoup de « à priori », « le but à terme », « réflexion en cours ». On sort du call avec des décisions actées : verticales de lancement, prix affichés ou non, scope télémarketing.</p></div>
+        <div class="card"><span class="tag">Confiance</span><h3>Valider sans flatter</h3><p>On valide sa vision (elle est bonne), mais on challenge là où c'est nécessaire. La valeur d'une agence, c'est aussi de dire ce qui ne va pas.</p></div>
+        <div class="card"><span class="tag">Opportunité</span><h3>Garder l'automation en vue</h3><p>Il évoque nous confier la revente d'automation. On note, on plante la graine, mais on ne laisse pas ça polluer le scope du site. Discussion dédiée plus tard.</p></div>
+        <div class="card"><span class="tag">Concurrence</span><h3>S'appuyer sur sa liste</h3><p>Il a nommé ses concurrents (Burogest, CCM, Ikanbi, Lemova…). On peut montrer qu'on a regardé leur positionnement et où Spit'Up gagne.</p></div>
+        <div class="card"><span class="tag">Langue</span><h3>FR d'abord, NL en question</h3><p>Tout est FR pour l'humain. Le NL n'existe que côté IA et son état réel est flou. Ne pas promettre une expérience NL complète tant que ce n'est pas confirmé.</p></div>
+      </div>
+    </section>
+
+    <!-- CADRAGE PROJET -->
+    <section class="view" data-view="roadmap">
+      <div class="section-head"><div><div class="eyebrow">Sortie de réunion</div><h2 class="h">Cadrage projet &amp; prochaines étapes</h2></div><div class="n">07</div></div>
+      <p class="sub">Ce qu'on veut avoir acté à la fin du call pour lancer le développement sans angle mort.</p>
+      <div class="grid g2">
+        <div class="card accent"><span class="tag">Décisions à acter</span>
+          <div class="li">Verticales de lancement (reco : médical + immo)</div>
+          <div class="li">Prix affichés ou « sur devis »</div>
+          <div class="li">Télémarketing : dans le scope ou non</div>
+          <div class="li">Démo AlexIA : CTA principal ou secondaire</div>
+          <div class="li">Budget &amp; date de mise en ligne visée</div>
+        </div>
+        <div class="card accent"><span class="tag">Livrables qu'il doit fournir</span>
+          <div class="li">Preuves : avis, chiffres, logos, cas clients</div>
+          <div class="li">Détail médical (Impulseo III, logiciels, urgences)</div>
+          <div class="li">Détail garages/construction si au scope</div>
+          <div class="li">Assets : logo, charte, photos, vidéos</div>
+          <div class="li">Liste des agendas/CRM à intégrer</div>
+        </div>
+        <div class="card"><span class="tag">Côté Banana Navy</span>
+          <div class="li">Architecture du site &amp; structure des verticales</div>
+          <div class="li">Maquette landing (hero + 2 CTA + preuves)</div>
+          <div class="li">Plan SEO/GEO sur le vocabulaire client</div>
+          <div class="li">Rédaction des FAQ manquantes</div>
+        </div>
+        <div class="card"><span class="tag">Workstreams parallèles</span>
+          <div class="li">RGPD / hébergement données sensibles</div>
+          <div class="li">Routing des leads &amp; CRM</div>
+          <div class="li">Tracking &amp; analytics</div>
+          <div class="li">Discussion automation Banana (séparée)</div>
+        </div>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Objectif de sortie : un périmètre v1 clair, une liste d'assets attendus avec dates, et 2 verticales validées pour démarrer.</div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section class="view" data-view="checklist">
+      <div class="section-head"><div><div class="eyebrow">À dérouler pendant le call</div><h2 class="h">Checklist des questions</h2></div><div class="n">08</div></div>
+      <p class="sub">Les questions concrètes à poser, cochables en direct. Rien ne sort de la réunion tant que les critiques ne sont pas répondues.</p>
+      <div class="progress"><div class="bar"><i id="pbar"></i></div><div class="pct" id="ppct">0 / 0 traité</div></div>
+      <div id="cklist"></div>
+      <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Astuce : coche au fur et à mesure. La progression est mémorisée sur cet appareil.</div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+/* checklist data */
+const CK = [
+  ["Offre & scope", [
+    "Quelles verticales lance-t-on en v1 ? (reco : médical + immo)",
+    "Le télémarketing 360° entre-t-il dans ce projet, oui ou non ?",
+    "Garages & construction : lancement ou phase 2 ?",
+    "Ouvre-t-on une discussion dédiée sur la revente d'automation Banana ?"
+  ]],
+  ["Tarification", [
+    "Affiche-t-on les prix sur le site ou « sur devis » ?",
+    "Y a-t-il une offre de lancement ou un essai gratuit ?",
+    "Quels services sont les plus rentables / à pousser ?",
+    "Frais d'installation ou de paramétrage à mentionner ?"
+  ]],
+  ["Preuves & crédibilité", [
+    "Combien de clients aujourd'hui, et depuis quand ?",
+    "Témoignages / avis utilisables sur le site ?",
+    "Logos clients autorisés à afficher ?",
+    "Chiffres communicables (appels traités, taux de réponse) ?",
+    "Quelles garanties qualité réelles peut-on mettre en avant ?"
+  ]],
+  ["Médical (verticale n°1)", [
+    "Comment expliquer Impulseo III simplement, et le coût net ?",
+    "Quels logiciels / agendas au-delà d'Ubicentrex et myconsultation ?",
+    "Comment sont gérées les urgences (au-delà de « fièvre → humain ») ?"
+  ]],
+  ["IA & capacités réelles", [
+    "Qu'est-ce qui est VRAIMENT opérationnel aujourd'hui, par métier ?",
+    "La démo AlexIA est-elle prête, stable et impressionnante ?",
+    "Le NL côté IA est-il prêt ou sur la roadmap ?"
+  ]],
+  ["Backup humain & modèle hybride", [
+    "Y a-t-il un backup humain quand l'IA doit escalader un appel ?",
+    "Appels NL/EN : un humain peut-il reprendre, ou est-ce 100% IA (à dire clairement) ?",
+    "Hors 8h–18h (nuit / week-end) : qui prend le relais d'une escalade, même en FR ?",
+    "Transfert temps réel : uniquement en médical, ou aussi avocats / immo / garages ?",
+    "À l'échelle, l'équipe humaine est-elle assez nombreuse et formée pour être le backup promis ?",
+    "Que vend-on comme « hybride » et comme « full IA » sans tromper le client ?"
+  ]],
+  ["Ciblage", [
+    "Client idéal par vertical (taille, récurrence) ?",
+    "Si on réussit 2 verticales d'abord, lesquelles ?"
+  ]],
+  ["Technique & intégrations", [
+    "Quels agendas/CRM à connecter côté immo et avocats ?",
+    "Site actuel : CMS, hébergeur, domaine ? Refonte ou nouveau socle ?",
+    "Où vont les leads (devis/démo) et qui répond, en combien de temps ?"
+  ]],
+  ["RGPD & légal", [
+    "Où sont hébergées les données (Belgique/UE) ? Conformité santé ?",
+    "Mentions légales, CGV, politique de confidentialité à prévoir ?"
+  ]],
+  ["Cadrage", [
+    "Budget et enveloppe pour le projet ?",
+    "Date de mise en ligne visée / contrainte de calendrier ?",
+    "Comment mesure-t-on le succès (KPIs) ?",
+    "Qui fournit quoi (assets, contenu, validation FAQ) et pour quand ?"
+  ]]
+];
+
+const root=document.getElementById('cklist');
+const KEY='spitup-kickoff-checks';
+const KEY2='spitup-kickoff-notes';
+let saved={},notes={};
+try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+try{notes=JSON.parse(localStorage.getItem(KEY2)||'{}')}catch(e){}
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+let total=0,ids=[];
+CK.forEach((grp,gi)=>{
+  const sec=document.createElement('div');sec.className='checkgrp';
+  let html='<h3>'+grp[0]+'</h3>';
+  grp[1].forEach((q,qi)=>{
+    const id='c'+gi+'_'+qi;ids.push(id);total++;
+    const done=saved[id]?' done':'';
+    html+='<div class="ck-row">'
+      +'<div class="ck'+done+'" data-id="'+id+'"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span class="txt">'+q+'</span></div>'
+      +'<textarea class="note" data-note="'+id+'" rows="1" placeholder="Réponse du client / notes…">'+esc(notes[id]||'')+'</textarea>'
+      +'</div>';
+  });
+  sec.innerHTML=html;root.appendChild(sec);
+});
+function autogrow(t){t.style.height='auto';t.style.height=Math.max(48,t.scrollHeight)+'px';}
+root.querySelectorAll('.note').forEach(autogrow);
+root.addEventListener('input',e=>{
+  if(!e.target.classList.contains('note'))return;
+  notes[e.target.dataset.note]=e.target.value;
+  localStorage.setItem(KEY2,JSON.stringify(notes));
+  autogrow(e.target);
+});
+function refresh(){
+  const n=ids.filter(i=>saved[i]).length;
+  document.getElementById('ppct').textContent=n+' / '+total+' traité';
+  document.getElementById('pbar').style.width=(total?Math.round(n/total*100):0)+'%';
+}
+root.addEventListener('click',e=>{
+  const c=e.target.closest('.ck');if(!c)return;
+  const id=c.dataset.id;saved[id]=!saved[id];
+  c.classList.toggle('done',saved[id]);
+  localStorage.setItem(KEY,JSON.stringify(saved));refresh();
+});
+refresh();
+
+/* view switching */
+const order=['cover','pitch','avant','clarifier','questionner','oublie','remarques','roadmap','checklist'];
+const labels={cover:'Couverture',pitch:"Le pitch d'ouverture",avant:'À mettre en avant',clarifier:'À clarifier',questionner:'À remettre en question',oublie:"Ce qu'on a oublié",remarques:'Remarques & posture',roadmap:'Cadrage projet',checklist:'Checklist questions'};
+let cur=0;
+const views=document.querySelectorAll('.view'),btns=document.querySelectorAll('.navbtn');
+function show(name){
+  cur=order.indexOf(name);
+  views.forEach(v=>v.classList.toggle('active',v.dataset.view===name));
+  btns.forEach(b=>b.classList.toggle('active',b.dataset.view===name));
+  document.getElementById('crumb').textContent=labels[name];
+  document.getElementById('prev').disabled=cur===0;
+  document.getElementById('next').disabled=cur===order.length-1;
+  window.scrollTo({top:0});closeRail();
+}
+btns.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+document.getElementById('prev').addEventListener('click',()=>{if(cur>0)show(order[cur-1])});
+document.getElementById('next').addEventListener('click',()=>{if(cur<order.length-1)show(order[cur+1])});
+window.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA'].includes(e.target.tagName))return;
+  if(e.key==='ArrowRight'&&cur<order.length-1)show(order[cur+1]);
+  if(e.key==='ArrowLeft'&&cur>0)show(order[cur-1]);
+});
+const rail=document.getElementById('rail'),scrim=document.getElementById('scrim');
+function closeRail(){rail.classList.remove('open');scrim.classList.remove('show')}
+document.getElementById('burger').addEventListener('click',()=>{rail.classList.add('open');scrim.classList.add('show')});
+scrim.addEventListener('click',closeRail);
+show('cover');
+</script>
+</body>
+</html>
