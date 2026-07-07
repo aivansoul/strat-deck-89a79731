@@ -381,6 +381,7 @@ addEventListener("scroll", () => {
 
 /* ---------- Démo : vague + conversation séquencée ---------- */
 const CONVO = [["caller","Bonjour, je voudrais un rendez-vous, j'ai un peu de fièvre et mal à la gorge depuis hier soir."],["ai","Je comprends. Ce n'est pas une urgence vitale — je vérifie l'agenda… La Dre Mertens a une plage demain à 14h40. Je vous la réserve ?"],["caller","Oui parfait. Est-ce que je dois apporter quelque chose ?"],["ai","Juste votre carte d'identité. C'est noté : demain 14h40. Vous recevez la confirmation par SMS — et le cabinet a déjà la synthèse de votre appel."]];
+const VO_TIMES = [0.0, 9.05, 18.9, 22.99]; // départ de chaque réplique dans la VO (secondes)
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
 
@@ -406,10 +407,11 @@ function playDemo() {
     b.className = "pp-bubble " + who;
     b.innerHTML = `<div class="who">${who === "ai" ? "AlexIA" : "Appelant"}</div>${text}`;
     transcript.appendChild(b);
+    const at = voice ? VO_TIMES[i] * 1000 + 150 : 400 + i * 1400;
     timers.push(setTimeout(() => {
       b.classList.add("show");
       transcript.scrollTop = transcript.scrollHeight;
-    }, 400 + i * 1400));
+    }, at));
   });
 }
 /* Micro : lance la démo (et la voix off dès que le fichier VO existe) */
@@ -421,13 +423,18 @@ let voice = null, voiceChecked = false;
 micBtn.addEventListener("click", () => {
   live.classList.add("on");
   hint.textContent = "Démo en cours — appuyez pour rejouer";
-  playDemo();
-  if (voice) { voice.currentTime = 0; voice.play().catch(() => {}); }
-  else if (!voiceChecked) {
+  if (voice) {
+    voice.currentTime = 0;
+    voice.play().catch(() => {});
+    playDemo();
+  } else if (!voiceChecked) {
     voiceChecked = true;
     fetch(DEMO_AUDIO, { method: "HEAD" }).then(r => {
       if (r.ok) { voice = new Audio(DEMO_AUDIO); voice.play().catch(() => {}); }
-    }).catch(() => {});
+      playDemo();
+    }).catch(() => playDemo());
+  } else {
+    playDemo();
   }
 });
 </script>

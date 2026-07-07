@@ -381,6 +381,7 @@ addEventListener("scroll", () => {
 
 /* ---------- Démo : vague + conversation séquencée ---------- */
 const CONVO = [["caller","Je vous appelle pour le 3 façades à Ixelles vu sur Immoweb — il est toujours disponible ?"],["ai","Oui ! Je peux organiser une visite. Vous achetez pour habiter ou pour investir — et avez-vous déjà un accord de principe pour le financement ?"],["caller","Pour habiter, et oui, l'accord de la banque est arrivé la semaine passée."],["ai","Excellent — profil prioritaire. Thomas a un créneau samedi 10h30 pour la visite. Je vous envoie la confirmation, et il reçoit votre fiche complète à l'instant."]];
+const VO_TIMES = [0.0, 5.93, 14.82, 20.51]; // départ de chaque réplique dans la VO (secondes)
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
 
@@ -406,10 +407,11 @@ function playDemo() {
     b.className = "pp-bubble " + who;
     b.innerHTML = `<div class="who">${who === "ai" ? "AlexIA" : "Appelant"}</div>${text}`;
     transcript.appendChild(b);
+    const at = voice ? VO_TIMES[i] * 1000 + 150 : 400 + i * 1400;
     timers.push(setTimeout(() => {
       b.classList.add("show");
       transcript.scrollTop = transcript.scrollHeight;
-    }, 400 + i * 1400));
+    }, at));
   });
 }
 /* Micro : lance la démo (et la voix off dès que le fichier VO existe) */
@@ -421,13 +423,18 @@ let voice = null, voiceChecked = false;
 micBtn.addEventListener("click", () => {
   live.classList.add("on");
   hint.textContent = "Démo en cours — appuyez pour rejouer";
-  playDemo();
-  if (voice) { voice.currentTime = 0; voice.play().catch(() => {}); }
-  else if (!voiceChecked) {
+  if (voice) {
+    voice.currentTime = 0;
+    voice.play().catch(() => {});
+    playDemo();
+  } else if (!voiceChecked) {
     voiceChecked = true;
     fetch(DEMO_AUDIO, { method: "HEAD" }).then(r => {
       if (r.ok) { voice = new Audio(DEMO_AUDIO); voice.play().catch(() => {}); }
-    }).catch(() => {});
+      playDemo();
+    }).catch(() => playDemo());
+  } else {
+    playDemo();
   }
 });
 </script>

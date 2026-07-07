@@ -381,6 +381,7 @@ addEventListener("scroll", () => {
 
 /* ---------- Démo : vague + conversation séquencée ---------- */
 const CONVO = [["caller","Bonjour, c'est pour une succession, j'aurais besoin de parler à Maître Janssens cette semaine."],["ai","Bien sûr. Je note vos coordonnées et la nature du dossier en toute confidentialité. Maître Janssens peut vous recevoir jeudi 11h30 ou vendredi 9h."],["caller","Jeudi 11h30. C'est assez urgent, il y a un délai qui court."],["ai","Noté comme prioritaire. Le dossier est créé et Maître Janssens reçoit la synthèse immédiatement. Si le délai est critique, je peux aussi vous transférer maintenant à son assistante."]];
+const VO_TIMES = [0.0, 6.25, 17.38, 23.87]; // départ de chaque réplique dans la VO (secondes)
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
 
@@ -406,10 +407,11 @@ function playDemo() {
     b.className = "pp-bubble " + who;
     b.innerHTML = `<div class="who">${who === "ai" ? "AlexIA" : "Appelant"}</div>${text}`;
     transcript.appendChild(b);
+    const at = voice ? VO_TIMES[i] * 1000 + 150 : 400 + i * 1400;
     timers.push(setTimeout(() => {
       b.classList.add("show");
       transcript.scrollTop = transcript.scrollHeight;
-    }, 400 + i * 1400));
+    }, at));
   });
 }
 /* Micro : lance la démo (et la voix off dès que le fichier VO existe) */
@@ -421,13 +423,18 @@ let voice = null, voiceChecked = false;
 micBtn.addEventListener("click", () => {
   live.classList.add("on");
   hint.textContent = "Démo en cours — appuyez pour rejouer";
-  playDemo();
-  if (voice) { voice.currentTime = 0; voice.play().catch(() => {}); }
-  else if (!voiceChecked) {
+  if (voice) {
+    voice.currentTime = 0;
+    voice.play().catch(() => {});
+    playDemo();
+  } else if (!voiceChecked) {
     voiceChecked = true;
     fetch(DEMO_AUDIO, { method: "HEAD" }).then(r => {
       if (r.ok) { voice = new Audio(DEMO_AUDIO); voice.play().catch(() => {}); }
-    }).catch(() => {});
+      playDemo();
+    }).catch(() => playDemo());
+  } else {
+    playDemo();
   }
 });
 </script>

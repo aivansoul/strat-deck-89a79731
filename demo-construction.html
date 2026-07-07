@@ -381,6 +381,7 @@ addEventListener("scroll", () => {
 
 /* ---------- Démo : vague + conversation séquencée ---------- */
 const CONVO = [["caller","Bonjour, j'aurais besoin d'un devis pour refaire ma toiture — il y a une fuite qui s'aggrave."],["ai","Je comprends, une fuite ça n'attend pas. Je note l'adresse et le type de couverture — tuiles ou toiture plate ?"],["caller","Des tuiles, une maison deux façades à Namur."],["ai","Merci. Je planifie une visite technique jeudi 8h et je marque le dossier comme urgent vu la fuite. Vous recevez la confirmation par SMS — l'équipe a déjà la fiche chantier."]];
+const VO_TIMES = [0.0, 5.61, 13.54, 17.79]; // départ de chaque réplique dans la VO (secondes)
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
 
@@ -406,10 +407,11 @@ function playDemo() {
     b.className = "pp-bubble " + who;
     b.innerHTML = `<div class="who">${who === "ai" ? "AlexIA" : "Appelant"}</div>${text}`;
     transcript.appendChild(b);
+    const at = voice ? VO_TIMES[i] * 1000 + 150 : 400 + i * 1400;
     timers.push(setTimeout(() => {
       b.classList.add("show");
       transcript.scrollTop = transcript.scrollHeight;
-    }, 400 + i * 1400));
+    }, at));
   });
 }
 /* Micro : lance la démo (et la voix off dès que le fichier VO existe) */
@@ -421,13 +423,18 @@ let voice = null, voiceChecked = false;
 micBtn.addEventListener("click", () => {
   live.classList.add("on");
   hint.textContent = "Démo en cours — appuyez pour rejouer";
-  playDemo();
-  if (voice) { voice.currentTime = 0; voice.play().catch(() => {}); }
-  else if (!voiceChecked) {
+  if (voice) {
+    voice.currentTime = 0;
+    voice.play().catch(() => {});
+    playDemo();
+  } else if (!voiceChecked) {
     voiceChecked = true;
     fetch(DEMO_AUDIO, { method: "HEAD" }).then(r => {
       if (r.ok) { voice = new Audio(DEMO_AUDIO); voice.play().catch(() => {}); }
-    }).catch(() => {});
+      playDemo();
+    }).catch(() => playDemo());
+  } else {
+    playDemo();
   }
 });
 </script>
