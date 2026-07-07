@@ -2625,7 +2625,7 @@ section.sec:has(.demo-stage) { padding: 0; }
   .hero-bg-stack .v-layer.show { transform: none; }
   .hero-bg-stack video,
   .hero-bg-stack img {
-    object-position: center 25%;
+    object-position: center;
     filter: brightness(.85) contrast(1.05) saturate(.98);
   }
   .hero-bg-overlay {
