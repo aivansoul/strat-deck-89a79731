@@ -2532,3 +2532,11 @@ h2.section-title { font-size: clamp(30px, 3.4vw, 48px); }
 .hyb-card h3 { font-size: clamp(19px, 1.8vw, 24px); }
 .hyb-card p { font-size: 13.5px; }
 .hyb-card ul li { font-size: 13px; padding: 7px 0; }
+
+/* Pages démo — la scène colle au hero (le .sec parent ajoutait 140px) */
+section.sec:has(.demo-stage) { padding: 0; }
+@media (max-width: 900px) {
+  .dhero { padding-bottom: 6px; }
+  .demo-stage { padding: 10px 0 56px; gap: 26px; }
+  .demo-visual { max-width: 100%; }
+}
