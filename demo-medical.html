@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css?v=20260708l"/>
+<link rel="stylesheet" href="styles.css?v=20260805"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
 <script type="application/ld+json">
@@ -100,6 +100,10 @@
       </div>
 
       <div class="demo-live" id="demo-live">
+        <div class="variant-switch" role="tablist" aria-label="Choix du scénario">
+          <button class="vs-btn active" data-v="nouveau" type="button" role="tab" aria-selected="true">Nouveau patient</button>
+          <button class="vs-btn" data-v="connu" type="button" role="tab" aria-selected="false">Patiente reconnue</button>
+        </div>
         <div class="demo-visual" style="--demo-bg:url('assets/pro/medical.jpg')">
           <button class="demo-mic" id="demo-mic" type="button" aria-label="Écouter la démo Médical">
             <span class="ring"></span><span class="ring r2"></span>
@@ -127,9 +131,9 @@
         <div class="pp-transcript" id="pp-transcript"></div>
 
         <div class="pp-summary">
-          <div class="lbl">Résumé · envoyé par email · 00:58</div>
-          <span id="pp-summary-text">Patiente, fièvre légère - RDV demain 14h40 (Dre Mertens). Confirmation SMS envoyée, synthèse transmise.</span>
-          <div class="tags"><span class="tag">Rendez-vous</span><span class="tag">Non urgent</span><span class="tag">SMS envoyé</span></div>
+          <div class="lbl">Résumé · envoyé par email · <span id="pp-dur">--:--</span></div>
+          <span id="pp-summary-text"></span>
+          <div class="tags" id="pp-summary-tags"></div>
         </div>
 
         <footer class="pp-foot">
@@ -380,11 +384,18 @@ addEventListener("scroll", () => {
   else nav.classList.remove("scrolled");
 }, { passive: true });
 
-/* ---------- Démo : vague + conversation séquencée ---------- */
-const CONVO = [["caller","Bonjour, je voudrais un rendez-vous, j'ai un peu de fièvre et mal à la gorge depuis hier soir."],["ai","Je comprends. Ce n'est pas une urgence vitale - je vérifie l'agenda… La Dre Mertens a une plage demain à 14h40. Je vous la réserve ?"],["caller","Oui parfait. Est-ce que je dois apporter quelque chose ?"],["ai","Juste votre carte d'identité. C'est noté : demain 14h40. Vous recevez la confirmation par SMS - et le cabinet a déjà la synthèse de votre appel."]];
-const VO_TIMES = [0.0, 5.0, 16.16, 19.48]; // départ de chaque réplique dans la VO (secondes)
+/* ---------- Démo : 2 scénarios (nouveau client / client reconnu) ---------- */
+const VARIANTS = {"nouveau": {"label": "Nouveau patient", "audio": "assets/vo/medical-nouveau.mp3", "times": [0.0, 8.47, 15.1, 21.33, 26.92, 31.71, 36.42, 42.09, 46.64, 51.19, 56.62, 65.89, 69.16], "dur": "01:21", "summary": "Nouvelle patiente (Sophie Laurent, °1991) - fièvre et gorge, non urgent. RDV demain 14h40 (Dre Mertens), dossier créé, confirmation SMS.", "tags": ["Nouveau dossier", "RDV demain 14h40", "SMS envoyé"], "convo": [["a", "Cabinet médical du Docteur Mertens, bonjour ! Je suis AlexIA, l'assistante du cabinet. Comment puis-je vous aider ?"], ["c", "Bonjour… je voudrais un rendez-vous, j'ai de la fièvre et mal à la gorge depuis hier soir."], ["a", "Je comprends. Question rapide : avez-vous des difficultés à respirer, ou une douleur dans la poitrine ?"], ["c", "Non non, rien de tout ça. Juste la gorge, et un peu de température."], ["a", "Très bien, rien d'alarmant alors. Êtes-vous déjà patiente du cabinet ?"], ["c", "Non, c'est la première fois. C'est une amie qui m'a recommandé le cabinet."], ["a", "Bienvenue alors ! Puis-je avoir votre nom complet, et votre date de naissance ?"], ["c", "Sophie Laurent, née le 12 mars 1991."], ["a", "Merci Sophie. Et un numéro de GSM pour la confirmation ?"], ["c", "Le 0476, 12, 34, 56."], ["a", "Parfait, votre dossier est créé. La Docteure Mertens a une place demain à 14 heures 40, ou jeudi à 9 heures 20. Vous préférez ?"], ["c", "Demain 14h40, c'est parfait."], ["a", "C'est réservé : demain, 14 heures 40. Pensez à votre carte d'identité. Vous recevez la confirmation par SMS, et le cabinet a déjà la synthèse de votre appel. Bon rétablissement, Sophie !"]]}, "connu": {"label": "Patiente reconnue", "audio": "assets/vo/medical-connu.mp3", "times": [0.0, 8.47, 15.02, 24.53, 26.84, 32.99, 40.18, 51.69, 54.56, 62.79, 66.94], "dur": "01:08", "summary": "Patiente reconnue (Mme Peeters) - renouvellement prescription + contrôle tension. RDV vendredi 10h20, rappel programmé la veille.", "tags": ["Dossier existant", "RDV vendredi 10h20", "Rappel la veille"], "convo": [["a", "Cabinet médical du Docteur Mertens, bonjour ! Je suis AlexIA, l'assistante du cabinet. Comment puis-je vous aider ?"], ["c", "Bonjour, c'est Martine Peeters. Il me faudrait un rendez-vous pour renouveler ma prescription."], ["a", "Bonjour Madame Peeters, je retrouve votre dossier. Vous êtes toujours joignable au 0495, 22, 18, 40 ?"], ["c", "C'est toujours ça, oui."], ["a", "Parfait. C'est uniquement pour le renouvellement de votre traitement habituel, ou autre chose à signaler ?"], ["c", "Le renouvellement… et j'aurais bien voulu qu'il regarde ma tension aussi, tant que j'y suis."], ["a", "Je note : renouvellement, plus un contrôle de tension. Le Docteur vous reçoit d'habitude le matin. Il reste jeudi 9 heures 40, ou vendredi 10 heures 20."], ["c", "Vendredi 10h20, plutôt."], ["a", "C'est noté, vendredi 10 heures 20. Tout est dans votre dossier, et vous recevrez un rappel la veille. À vendredi, Madame Peeters !"], ["c", "Merci beaucoup, c'était rapide. Au revoir !"], ["a", "Avec plaisir, au revoir !"]]}};
+let curVar = "nouveau";
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
+const summaryEl = document.getElementById("pp-summary-text");
+const tagsEl = document.getElementById("pp-summary-tags");
+const durEl = document.getElementById("pp-dur");
+const live = document.getElementById("demo-live");
+const micBtn = document.getElementById("demo-mic");
+const hint = document.getElementById("demo-mic-hint");
+const voices = {};
 
 (function buildWave() {
   for (let i = 0; i < 56; i++) {
@@ -398,47 +409,73 @@ const transcript = document.getElementById("pp-transcript");
   }
 })();
 
+function applySummary() {
+  const V = VARIANTS[curVar];
+  summaryEl.textContent = V.summary;
+  tagsEl.innerHTML = V.tags.map(t => `<span class="tag">${t}</span>`).join("");
+  durEl.textContent = V.dur || "--:--";
+}
+applySummary();
+
 let timers = [];
 function playDemo() {
   timers.forEach(t => clearTimeout(t));
   timers = [];
   transcript.innerHTML = "";
-  CONVO.forEach(([who, text], i) => {
+  const V = VARIANTS[curVar];
+  const synced = voices[curVar] && V.times.length === V.convo.length;
+  V.convo.forEach(([who, text], i) => {
     const b = document.createElement("div");
-    b.className = "pp-bubble " + who;
-    b.innerHTML = `<div class="who">${who === "ai" ? "AlexIA" : "Appelant"}</div>${text}`;
+    b.className = "pp-bubble " + (who === "a" ? "ai" : "caller");
+    b.innerHTML = `<div class="who">${who === "a" ? "AlexIA" : "Appelant"}</div>${text}`;
     transcript.appendChild(b);
-    const at = voice ? VO_TIMES[i] * 1000 + 150 : 400 + i * 1400;
+    const at = synced ? V.times[i] * 1000 + 150 : 400 + i * 2400;
     timers.push(setTimeout(() => {
       b.classList.add("show");
       transcript.scrollTop = transcript.scrollHeight;
     }, at));
   });
 }
-/* Micro : lance la démo (et la voix off dès que le fichier VO existe) */
-const live = document.getElementById("demo-live");
-const micBtn = document.getElementById("demo-mic");
-const hint = document.getElementById("demo-mic-hint");
-const DEMO_AUDIO = "assets/vo/medical.mp3"; // VO générée à lier - jouée automatiquement dès que le fichier est présent
-let voice = null, voiceChecked = false;
+
+function stopAllAudio() {
+  Object.values(voices).forEach(a => { if (a) { a.pause(); a.currentTime = 0; } });
+}
+
 function launchDemo() {
   live.classList.add("on");
-  if (voice) {
-    voice.currentTime = 0;
-    voice.play().catch(() => {});
+  hint.textContent = "Démo en cours - appuyez pour rejouer";
+  stopAllAudio();
+  const V = VARIANTS[curVar];
+  if (voices[curVar]) {
+    voices[curVar].play().catch(() => {});
     playDemo();
-  } else if (!voiceChecked) {
-    voiceChecked = true;
-    fetch(DEMO_AUDIO, { method: "HEAD" }).then(r => {
-      if (r.ok) { voice = new Audio(DEMO_AUDIO); voice.play().catch(() => {}); }
+  } else if (voices[curVar] === undefined) {
+    fetch(V.audio, { method: "HEAD" }).then(r => {
+      voices[curVar] = r.ok ? new Audio(V.audio) : null;
+      if (voices[curVar]) voices[curVar].play().catch(() => {});
       playDemo();
-    }).catch(() => playDemo());
+    }).catch(() => { voices[curVar] = null; playDemo(); });
   } else {
     playDemo();
   }
 }
 micBtn.addEventListener("click", launchDemo);
 document.getElementById("pp-replay").addEventListener("click", launchDemo);
+
+document.querySelectorAll(".vs-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.dataset.v === curVar) return;
+    curVar = btn.dataset.v;
+    document.querySelectorAll(".vs-btn").forEach(b => {
+      const on = b.dataset.v === curVar;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-selected", on);
+    });
+    applySummary();
+    stopAllAudio();
+    if (live.classList.contains("on")) launchDemo();
+  });
+});
 </script>
 <script src="anim.js?v=20260709"></script>
 </body>

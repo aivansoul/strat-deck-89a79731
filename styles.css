@@ -2636,3 +2636,28 @@ section.sec:has(.demo-stage) { padding: 0; }
         rgba(11,11,11,.58) 100%);
   }
 }
+
+/* ============== Sélecteur de scénario des démos ============== */
+.variant-switch {
+  display: flex; gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+  width: 100%;
+}
+.vs-btn {
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--mute);
+  cursor: pointer;
+  transition: border-color .3s, color .3s, background .3s;
+}
+.vs-btn:hover { border-color: var(--gold); color: var(--gold-deep); }
+.vs-btn.active {
+  border-color: var(--gold);
+  color: var(--gold-deep);
+  background: color-mix(in srgb, var(--gold) 10%, #fff);
+}

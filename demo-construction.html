@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css?v=20260708l"/>
+<link rel="stylesheet" href="styles.css?v=20260805"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
 <script type="application/ld+json">
@@ -100,6 +100,10 @@
       </div>
 
       <div class="demo-live" id="demo-live">
+        <div class="variant-switch" role="tablist" aria-label="Choix du scénario">
+          <button class="vs-btn active" data-v="nouveau" type="button" role="tab" aria-selected="true">Nouvelle demande</button>
+          <button class="vs-btn" data-v="connu" type="button" role="tab" aria-selected="false">Client reconnu</button>
+        </div>
         <div class="demo-visual" style="--demo-bg:url('assets/pro/construction.jpg')">
           <button class="demo-mic" id="demo-mic" type="button" aria-label="Écouter la démo Construction">
             <span class="ring"></span><span class="ring r2"></span>
@@ -127,9 +131,9 @@
         <div class="pp-transcript" id="pp-transcript"></div>
 
         <div class="pp-summary">
-          <div class="lbl">Résumé · envoyé par email · 00:58</div>
-          <span id="pp-summary-text">Fuite toiture (tuiles, Namur) - visite technique jeudi 8h, dossier marqué urgent, fiche chantier créée.</span>
-          <div class="tags"><span class="tag">Devis toiture</span><span class="tag">Urgent</span><span class="tag">Visite jeudi 8h</span></div>
+          <div class="lbl">Résumé · envoyé par email · <span id="pp-dur">--:--</span></div>
+          <span id="pp-summary-text"></span>
+          <div class="tags" id="pp-summary-tags"></div>
         </div>
 
         <footer class="pp-foot">
@@ -380,11 +384,18 @@ addEventListener("scroll", () => {
   else nav.classList.remove("scrolled");
 }, { passive: true });
 
-/* ---------- Démo : vague + conversation séquencée ---------- */
-const CONVO = [["caller","Bonjour, j'aurais besoin d'un devis pour refaire ma toiture - il y a une fuite qui s'aggrave."],["ai","Je comprends, une fuite ça n'attend pas. Je note l'adresse et le type de couverture - tuiles ou toiture plate ?"],["caller","Des tuiles, une maison deux façades à Namur."],["ai","Merci. Je planifie une visite technique jeudi 8h et je marque le dossier comme urgent vu la fuite. Vous recevez la confirmation par SMS - l'équipe a déjà la fiche chantier."]];
-const VO_TIMES = [0.0, 5.48, 13.92, 18.36]; // départ de chaque réplique dans la VO (secondes)
+/* ---------- Démo : 2 scénarios (nouveau client / client reconnu) ---------- */
+const VARIANTS = {"nouveau": {"label": "Nouvelle demande", "audio": "assets/vo/construction-nouveau.mp3", "times": [], "dur": "", "summary": "Nouveau client (M. Rossi, Namur) - fuite toiture tuiles qui s'aggrave. Photos par WhatsApp demandées, visite technique jeudi 8h, dossier marqué urgent.", "tags": ["Devis toiture", "Urgent", "Visite jeudi 8h"], "convo": [["a", "Entreprise Delvaux Toitures, bonjour ! Je suis AlexIA, l'assistante de l'entreprise. Comment puis-je vous aider ?"], ["c", "Bonjour… j'aurais besoin d'un devis pour ma toiture. Il y a une fuite, et franchement, ça s'aggrave."], ["a", "Je comprends, une fuite ça n'attend pas. C'est une toiture en tuiles, en ardoises, ou une toiture plate ?"], ["c", "Des tuiles. Une maison deux façades."], ["a", "Merci. Puis-je avoir votre nom, et l'adresse du chantier ?"], ["c", "Antonio Rossi, rue des Carmes 27, à Namur."], ["a", "Noté. Un GSM pour vous joindre, et pour l'envoi de la confirmation ?"], ["c", "0489, 55, 43, 21."], ["a", "Parfait. Si vous pouvez, envoyez deux ou trois photos de la fuite sur ce même numéro par WhatsApp : l'équipe préparera mieux la visite."], ["c", "Ah oui, bonne idée, je fais ça tantôt."], ["a", "Vu la fuite, je vous place en priorité : visite technique jeudi à 8 heures, avant le chantier du jour. Ça vous va ?"], ["c", "Jeudi 8 heures, impeccable. Merci hein !"], ["a", "C'est réservé, Monsieur Rossi. Confirmation par SMS, la fiche chantier est créée, et l'équipe a déjà le contexte. À jeudi !"]]}, "connu": {"label": "Client reconnu", "audio": "assets/vo/construction-connu.mp3", "times": [], "dur": "", "summary": "Client reconnu (M. Georges, chantier annexe en cours) - question planning après la pluie. Chantier vu au dossier : reprise confirmée, callback du chef d'équipe à midi.", "tags": ["Chantier en cours", "Callback midi", "Planning"], "convo": [["a", "Entreprise Delvaux Toitures, bonjour ! Je suis AlexIA, l'assistante de l'entreprise. Comment puis-je vous aider ?"], ["c", "Oui bonjour, c'est Monsieur Georges, pour le chantier de l'annexe à Wépion."], ["a", "Bonjour Monsieur Georges ! Je retrouve votre chantier : l'annexe, démarré la semaine passée. Que puis-je faire ?"], ["c", "Avec la pluie d'hier, je voulais savoir si l'équipe passe toujours demain comme prévu."], ["a", "D'après le planning, l'équipe est bien prévue chez vous demain à 7 heures 30. Pour confirmer à cent pour cent après la météo d'hier, je préfère que le chef d'équipe vous le valide lui-même."], ["c", "Ah oui, très bien, comme ça je m'organise."], ["a", "Il est sur chantier ce matin. Je programme son appel vers midi, toujours au 0472, 18, 65, 30 ?"], ["c", "C'est ça oui, midi c'est très bien."], ["a", "C'est enregistré : rappel à midi avec la confirmation du passage de demain. Votre question est notée dans la fiche chantier. Bonne journée, Monsieur Georges !"], ["c", "Merci beaucoup, bonne journée."]]}};
+let curVar = "nouveau";
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
+const summaryEl = document.getElementById("pp-summary-text");
+const tagsEl = document.getElementById("pp-summary-tags");
+const durEl = document.getElementById("pp-dur");
+const live = document.getElementById("demo-live");
+const micBtn = document.getElementById("demo-mic");
+const hint = document.getElementById("demo-mic-hint");
+const voices = {};
 
 (function buildWave() {
   for (let i = 0; i < 56; i++) {
@@ -398,47 +409,73 @@ const transcript = document.getElementById("pp-transcript");
   }
 })();
 
+function applySummary() {
+  const V = VARIANTS[curVar];
+  summaryEl.textContent = V.summary;
+  tagsEl.innerHTML = V.tags.map(t => `<span class="tag">${t}</span>`).join("");
+  durEl.textContent = V.dur || "--:--";
+}
+applySummary();
+
 let timers = [];
 function playDemo() {
   timers.forEach(t => clearTimeout(t));
   timers = [];
   transcript.innerHTML = "";
-  CONVO.forEach(([who, text], i) => {
+  const V = VARIANTS[curVar];
+  const synced = voices[curVar] && V.times.length === V.convo.length;
+  V.convo.forEach(([who, text], i) => {
     const b = document.createElement("div");
-    b.className = "pp-bubble " + who;
-    b.innerHTML = `<div class="who">${who === "ai" ? "AlexIA" : "Appelant"}</div>${text}`;
+    b.className = "pp-bubble " + (who === "a" ? "ai" : "caller");
+    b.innerHTML = `<div class="who">${who === "a" ? "AlexIA" : "Appelant"}</div>${text}`;
     transcript.appendChild(b);
-    const at = voice ? VO_TIMES[i] * 1000 + 150 : 400 + i * 1400;
+    const at = synced ? V.times[i] * 1000 + 150 : 400 + i * 2400;
     timers.push(setTimeout(() => {
       b.classList.add("show");
       transcript.scrollTop = transcript.scrollHeight;
     }, at));
   });
 }
-/* Micro : lance la démo (et la voix off dès que le fichier VO existe) */
-const live = document.getElementById("demo-live");
-const micBtn = document.getElementById("demo-mic");
-const hint = document.getElementById("demo-mic-hint");
-const DEMO_AUDIO = "assets/vo/construction.mp3"; // VO générée à lier - jouée automatiquement dès que le fichier est présent
-let voice = null, voiceChecked = false;
+
+function stopAllAudio() {
+  Object.values(voices).forEach(a => { if (a) { a.pause(); a.currentTime = 0; } });
+}
+
 function launchDemo() {
   live.classList.add("on");
-  if (voice) {
-    voice.currentTime = 0;
-    voice.play().catch(() => {});
+  hint.textContent = "Démo en cours - appuyez pour rejouer";
+  stopAllAudio();
+  const V = VARIANTS[curVar];
+  if (voices[curVar]) {
+    voices[curVar].play().catch(() => {});
     playDemo();
-  } else if (!voiceChecked) {
-    voiceChecked = true;
-    fetch(DEMO_AUDIO, { method: "HEAD" }).then(r => {
-      if (r.ok) { voice = new Audio(DEMO_AUDIO); voice.play().catch(() => {}); }
+  } else if (voices[curVar] === undefined) {
+    fetch(V.audio, { method: "HEAD" }).then(r => {
+      voices[curVar] = r.ok ? new Audio(V.audio) : null;
+      if (voices[curVar]) voices[curVar].play().catch(() => {});
       playDemo();
-    }).catch(() => playDemo());
+    }).catch(() => { voices[curVar] = null; playDemo(); });
   } else {
     playDemo();
   }
 }
 micBtn.addEventListener("click", launchDemo);
 document.getElementById("pp-replay").addEventListener("click", launchDemo);
+
+document.querySelectorAll(".vs-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.dataset.v === curVar) return;
+    curVar = btn.dataset.v;
+    document.querySelectorAll(".vs-btn").forEach(b => {
+      const on = b.dataset.v === curVar;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-selected", on);
+    });
+    applySummary();
+    stopAllAudio();
+    if (live.classList.contains("on")) launchDemo();
+  });
+});
 </script>
 <script src="anim.js?v=20260709"></script>
 </body>
