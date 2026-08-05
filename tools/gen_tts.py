@@ -18,13 +18,45 @@ CALLERS = {
     ("avocats", "connu"): "fBpCO0Kf0krKLYGOu65w",        # Émilie - Mme Lambert
     ("immobilier", "nouveau"): "8R6pzcy1HIr4WcoApmzw",   # Amadou - Julien Moreau
     ("immobilier", "connu"): "t28pUgJnL2wUUQ8SOnaU",     # Lucas - M. Hendrickx
-    ("construction", "nouveau"): "8qnuneLiGjGrT4A62CCe", # Jules - M. Rossi
-    ("construction", "connu"): "t28pUgJnL2wUUQ8SOnaU",   # Lucas - M. Georges
+    ("construction", "nouveau"): "kRnE5e47lbU8Zg2MPQPm", # Moussa - M. Rossi (chaleureux)
+    ("construction", "connu"): "necQJzI1X0vLpdnJteap",   # Laurent - M. Georges (warm reassuring)
     ("horeca", "nouveau"): "Xb7hH8MSUJpSbSDYk0k2",       # Alice - Emily (EN)
     ("horeca", "connu"): "FFXYdAYPzn8Tw8KiHZqg",         # Ingrid - Mme Rousseau
     ("automobile", "nouveau"): "zlP1wgh6FsmMZswaDa2M",   # Julien - Stef Wouters
     ("automobile", "connu"): "zlP1wgh6FsmMZswaDa2M",     # Julien - Stef Wouters (même client !)
 }
+import re as _re
+from num2words import num2words as _n2w
+
+def _num_be(tok, lang):
+    """Nombre isolé → lettres. Les tokens commençant par 0 (GSM) se lisent par paires."""
+    if tok.startswith("0") and len(tok) >= 2:
+        pairs = [tok[i:i+2] for i in range(0, len(tok), 2)]
+        parts = []
+        for pr in pairs:
+            if len(pr) == 2 and pr[0] == "0":
+                parts.append("zéro " + _n2w(int(pr[1]), lang=lang))
+            else:
+                parts.append(_n2w(int(pr), lang=lang))
+        return ", ".join(parts)
+    return _n2w(int(tok), lang=lang)
+
+def to_speech(text, lang="fr_BE"):
+    """Version orale : heures et nombres en toutes lettres (septante/nonante en FR-BE)."""
+    text = _re.sub(r"\b(\d{1,2})\s*h\s*(\d{2})\b",
+                   lambda m: f"{_n2w(int(m[1]), lang=lang)} heures {_n2w(int(m[2]), lang=lang)}", text)
+    text = _re.sub(r"\b(\d{1,2}) heures (\d{1,2})\b",
+                   lambda m: f"{_n2w(int(m[1]), lang=lang)} heures {_n2w(int(m[2]), lang=lang)}", text)
+    text = _re.sub(r"\b(\d{1,2}) heures\b",
+                   lambda m: f"{_n2w(int(m[1]), lang=lang)} heures", text)
+    text = _re.sub(r"\b\d+\b", lambda m: _num_be(m[0], lang), text)
+    return text
+
+# répliques avec prononciation orale imposée (numéro international anglais)
+TTS_OVERRIDES = {
+    ("horeca", "nouveau", 8): "It's plus double four, seven seven zero zero, nine zero zero, one two three.",
+}
+
 SET_ALEXIA = {"stability": 0.5, "similarity_boost": 0.85, "use_speaker_boost": True}
 SET_CALLER = {"stability": 0.0, "similarity_boost": 0.85, "use_speaker_boost": True}
 
@@ -56,7 +88,10 @@ for metier, variants in D.items():
                 continue
             vid = ALEXIA if role == "a" else CALLERS[(metier, var)]
             st = SET_ALEXIA if role == "a" else SET_CALLER
-            if tts(vid, text, f, st):
+            ov = TTS_OVERRIDES.get((metier, var, i + 1))
+            lang = "en" if (metier == "horeca" and var == "nouveau") else "fr_BE"
+            speech = ov if ov else to_speech(text, lang)
+            if tts(vid, speech, f, st):
                 ok += 1
                 print(f"✓ {f.name}", flush=True)
 print(f"\nDONE: {ok} générés · {skipped} déjà présents · {total} total", flush=True)
