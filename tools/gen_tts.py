@@ -6,7 +6,7 @@ SC = pathlib.Path("/private/tmp/claude-501/-Users-svetlanatotolina-SpitUp/48298a
 OUT = SC / "vo12"
 OUT.mkdir(exist_ok=True)
 import os
-KEY = os.environ["XI_KEY"]  # export XI_KEY=... avant de lancer
+KEY = os.environ.get("XI_KEY", "")
 
 D = json.loads((SC / "dialogues.json").read_text(encoding="utf-8"))
 
@@ -25,10 +25,11 @@ CALLERS = {
     ("automobile", "nouveau"): "zlP1wgh6FsmMZswaDa2M",   # Julien - Stef Wouters
     ("automobile", "connu"): "zlP1wgh6FsmMZswaDa2M",     # Julien - Stef Wouters (même client !)
 }
-SETTINGS = {"stability": 0.5, "similarity_boost": 0.85, "use_speaker_boost": True}
+SET_ALEXIA = {"stability": 0.5, "similarity_boost": 0.85, "use_speaker_boost": True}
+SET_CALLER = {"stability": 0.0, "similarity_boost": 0.85, "use_speaker_boost": True}
 
-def tts(voice_id, text, out: pathlib.Path):
-    body = json.dumps({"text": text, "model_id": "eleven_v3", "voice_settings": SETTINGS})
+def tts(voice_id, text, out: pathlib.Path, settings=None):
+    body = json.dumps({"text": text, "model_id": "eleven_v3", "voice_settings": settings or SET_ALEXIA})
     for attempt in range(4):
         r = subprocess.run([
             "curl", "-s", "-w", "%{http_code}", "-o", str(out),
@@ -54,7 +55,8 @@ for metier, variants in D.items():
                 skipped += 1
                 continue
             vid = ALEXIA if role == "a" else CALLERS[(metier, var)]
-            if tts(vid, text, f):
+            st = SET_ALEXIA if role == "a" else SET_CALLER
+            if tts(vid, text, f, st):
                 ok += 1
                 print(f"✓ {f.name}", flush=True)
 print(f"\nDONE: {ok} générés · {skipped} déjà présents · {total} total", flush=True)
