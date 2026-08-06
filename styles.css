@@ -2840,7 +2840,7 @@ section.sec:has(.demo-stage) { padding: 0; }
 /* Hero mobile : le texte service en retrait — plus petit, plus discret */
 @media (max-width: 640px) {
   .hero .hero-side {
-    font-size: 13.5px;
+    font-size: 10.5px;
     line-height: 1.5;
     color: rgba(255, 255, 255, .78);
     max-width: 44ch;
