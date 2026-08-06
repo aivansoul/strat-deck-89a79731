@@ -2796,3 +2796,10 @@ section.sec:has(.demo-stage) { padding: 0; }
   outline: none;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent);
 }
+
+/* Mobile/tablette : hero des pages démo resserré (header → eyebrow → titre) */
+@media (max-width: 900px) {
+  .dhero { padding-top: 92px; }
+  .dhero .eyebrow { margin-bottom: 12px; }
+  .demo-stage--hero { padding-top: 0; }
+}
