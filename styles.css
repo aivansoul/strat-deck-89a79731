@@ -2803,3 +2803,22 @@ section.sec:has(.demo-stage) { padding: 0; }
   .dhero .eyebrow { margin-bottom: 10px; }
   .demo-stage--hero { padding-top: 0; }
 }
+
+/* ============================================================
+   Boutons : hover discret — simple fondu de couleur, aucun mouvement
+   (cercle de remplissage et glissement de flèche désactivés)
+   ============================================================ */
+.btn::before { display: none; }
+.btn:hover .arr { transform: none; }
+.btn, .btn .arr { transition: background .3s, color .3s, border-color .3s, box-shadow .3s; }
+
+/* Couleurs hover rétablies par variante (le cercle les portait avant) */
+.btn-primary:hover,
+.hero .btn-primary:hover,
+.finalcta .btn-primary:hover { background: var(--gold-deep); border-color: var(--gold-deep); color: #fff; }
+.nav .btn-primary:hover { background: var(--gold); border-color: var(--gold); }
+.btn-gold:hover { background: var(--gold-deep); border-color: var(--gold-deep); }
+.btn-ghost:hover,
+.hero .btn-ghost:hover,
+.finalcta .btn-ghost:hover { background: #fff; color: var(--gold-deep); border-color: var(--gold); }
+.btn-ghost:hover .play { fill: var(--gold-deep); }
