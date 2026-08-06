@@ -2836,3 +2836,26 @@ section.sec:has(.demo-stage) { padding: 0; }
   .hero .btn { padding: 12px 22px; font-size: 14px; border-radius: 14px; }
   .hero-cta-row { gap: 10px; }
 }
+
+/* Hero mobile : le texte service en retrait — plus petit, plus discret */
+@media (max-width: 640px) {
+  .hero .hero-side {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, .78);
+    max-width: 44ch;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, .3);
+  }
+}
+
+/* Mobile : mention « Sans engagement » discrète, pas plus large que les CTA */
+@media (max-width: 640px) {
+  .hero .cta-note {
+    font-size: 10.5px;
+    gap: 8px;
+    margin-top: 12px !important;
+    max-width: 100%;
+  }
+  .hero .cta-note svg { width: 13px; height: 13px; flex: none; }
+  .hero .cta-note span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
