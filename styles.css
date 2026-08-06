@@ -2831,7 +2831,8 @@ section.sec:has(.demo-stage) { padding: 0; }
 
 /* Mobile : « Le télésecrétariat, » sur une ligne + les 2 CTA visibles */
 @media (max-width: 640px) {
-  .hero h1.display { font-size: clamp(25px, 7.8vw, 34px); }
+  /* taille max qui garde « Le télésecrétariat, » sur 1 ligne avec ≥1rem de marge */
+  .hero h1.display { font-size: clamp(30px, calc(11.4vw - 3.6px), 46px); }
   .hero .btn { padding: 12px 22px; font-size: 14px; border-radius: 14px; }
   .hero-cta-row { gap: 10px; }
 }
