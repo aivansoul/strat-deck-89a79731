@@ -148,13 +148,12 @@ for metier, page in PAGES.items():
 
     # 3) bloc JS
     start = h.find("/* ---------- Démo")
-    end_marker = 'document.getElementById("pp-replay").addEventListener("click", launchDemo);'
-    end = h.find(end_marker)
+    end = h.find("</script>", start)
     assert start > 0 and end > start, f"{page}: bloc JS introuvable"
-    h = h[:start] + NEW_JS_TPL.replace("__VARIANTS__", vjson) + h[end + len(end_marker):]
+    h = h[:start] + NEW_JS_TPL.replace("__VARIANTS__", vjson) + "\n" + h[end:]
 
     # 4) bump cache CSS
-    h = re.sub(r'styles\.css\?v=[0-9a-z]+', 'styles.css?v=20260805', h)
+    h = re.sub(r'styles\.css\?v=[0-9a-z]+', 'styles.css?v=20260806c', h)
     p.write_text(h, encoding="utf-8")
     n_times = sum(1 for v in variants.values() if v["times"])
     print(f"{page} : patché · variantes audio synchronisées : {n_times}/2")

@@ -16,8 +16,8 @@ CALLERS = {
     ("medical", "connu"): "FFXYdAYPzn8Tw8KiHZqg",        # Ingrid - Mme Peeters
     ("avocats", "nouveau"): "mVjOqyqTPfwlXPjV5sjX",      # Thierry - M. Dubois
     ("avocats", "connu"): "fBpCO0Kf0krKLYGOu65w",        # Émilie - Mme Lambert
-    ("immobilier", "nouveau"): "8R6pzcy1HIr4WcoApmzw",   # Amadou - Julien Moreau
-    ("immobilier", "connu"): "t28pUgJnL2wUUQ8SOnaU",     # Lucas - M. Hendrickx
+    ("immobilier", "nouveau"): "usy5mXLbV9SeGWACyT3Y",   # Luca (belge) - Julien Moreau
+    ("immobilier", "connu"): "IpTJxgMFj1wbxpha4zxm",     # Adrien Piret (belge) - M. Hendrickx
     ("construction", "nouveau"): "kRnE5e47lbU8Zg2MPQPm", # Moussa - M. Rossi (chaleureux)
     ("construction", "connu"): "necQJzI1X0vLpdnJteap",   # Laurent - M. Georges (warm reassuring)
     ("horeca", "nouveau"): "Xb7hH8MSUJpSbSDYk0k2",       # Alice - Emily (EN)
