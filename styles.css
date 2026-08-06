@@ -2724,3 +2724,27 @@ section.sec:has(.demo-stage) { padding: 0; }
   .dhero .eyebrow { margin-bottom: 18px; }
   .demo-stage { padding: 22px 0 36px; }
 }
+
+/* ============================================================
+   Passe mobile : corrections d'incohérences (2026-08-06)
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Hero : les villes tiennent sur une ligne (plus de « Mons » orphelin),
+     rythme resserré pour remonter les CTA vers la fold */
+  .hero { padding-top: 100px; }
+  .hero-stats { font-size: 10px; letter-spacing: .05em; gap: 6px; margin-top: 14px; }
+  .hero-stats .hero-stat-sep { margin: 0 2px; }
+  .hero-foot { margin-top: 22px; padding-top: 20px; gap: 26px; }
+  .hero-facts { margin-top: 18px; }
+  .hero .marquee { margin-top: 26px; }
+
+  /* Belgique : icône calée sur la première ligne du titre, carte resserrée */
+  .bel-items li { align-items: flex-start; gap: 14px; padding: 16px 18px; }
+  .bel-items .bi-ic { width: 44px; height: 44px; margin-top: 2px; }
+  .bel-items .bi-ic svg { width: 20px; height: 20px; }
+  .bel-items .bi-chev { margin-top: 14px; }
+
+  /* Avis : le label « Ils nous font confiance » sur sa propre ligne */
+  .proof-logos { row-gap: 12px; }
+  .pl-label { flex-basis: 100%; }
+}
