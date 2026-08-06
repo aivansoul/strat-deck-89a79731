@@ -2828,3 +2828,10 @@ section.sec:has(.demo-stage) { padding: 0; }
 .nav.nav--solid .logo-word--white { display: none; }
 .nav.nav--solid .logo-word--dark { display: block; }
 .nav.nav--solid .logo-text .logo-spit { color: var(--ink); }
+
+/* Mobile : « Le télésecrétariat, » sur une ligne + les 2 CTA visibles */
+@media (max-width: 640px) {
+  .hero h1.display { font-size: clamp(25px, 7.8vw, 34px); }
+  .hero .btn { padding: 12px 22px; font-size: 14px; border-radius: 14px; }
+  .hero-cta-row { gap: 10px; }
+}
