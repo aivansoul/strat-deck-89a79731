@@ -10,6 +10,8 @@ try:
 except FileNotFoundError:
     VT = {}
 
+DEFAULTS = {"horeca": "connu"}  # démo lancée en FR par défaut
+
 PAGES = {"medical": "demo-medical.html", "avocats": "demo-avocats.html",
          "immobilier": "demo-immobilier.html", "construction": "demo-construction.html",
          "horeca": "demo-horeca.html", "automobile": "demo-automobile.html"}
@@ -18,7 +20,7 @@ def clean(t): return re.sub(r"\[[a-z ]+\] ?", "", t)
 
 NEW_JS_TPL = '''/* ---------- Démo : 2 scénarios (nouveau client / client reconnu) ---------- */
 const VARIANTS = __VARIANTS__;
-let curVar = "nouveau";
+let curVar = "__DEFVAR__";
 const wave = document.getElementById("pp-wave");
 const transcript = document.getElementById("pp-transcript");
 const summaryEl = document.getElementById("pp-summary-text");
@@ -128,6 +130,7 @@ for metier, page in PAGES.items():
             "convo": [[r, clean(x)] for r, x in dd["turns"]],
         }
     vjson = json.dumps(variants, ensure_ascii=False)
+    defvar = DEFAULTS.get(metier, "nouveau")
 
     # 1) switch avant la carte (si pas déjà présent)
     if "variant-switch" not in h:
@@ -150,10 +153,10 @@ for metier, page in PAGES.items():
     start = h.find("/* ---------- Démo")
     end = h.find("</script>", start)
     assert start > 0 and end > start, f"{page}: bloc JS introuvable"
-    h = h[:start] + NEW_JS_TPL.replace("__VARIANTS__", vjson) + "\n" + h[end:]
+    h = h[:start] + NEW_JS_TPL.replace("__VARIANTS__", vjson).replace("__DEFVAR__", defvar) + "\n" + h[end:]
 
     # 4) bump cache CSS
-    h = re.sub(r'styles\.css\?v=[0-9a-z]+', 'styles.css?v=20260806c', h)
+    h = re.sub(r'styles\.css\?v=[0-9a-z]+', 'styles.css?v=20260806e', h)
     p.write_text(h, encoding="utf-8")
     n_times = sum(1 for v in variants.values() if v["times"])
     print(f"{page} : patché · variantes audio synchronisées : {n_times}/2")

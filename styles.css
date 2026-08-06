@@ -2787,3 +2787,12 @@ section.sec:has(.demo-stage) { padding: 0; }
   .demo-stage--hero .demo-side { margin-top: 24px; }
   .dhero .sub.demo-note { margin-top: 16px; }
 }
+
+/* Boutons : jamais de contour noir — le remplissage hover est doré, la bordure suit ;
+   focus souris invisible, focus clavier = anneau doré discret (accessibilité) */
+.nav .btn-primary:hover { border-color: var(--gold); }
+.btn:focus { outline: none; }
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent);
+}

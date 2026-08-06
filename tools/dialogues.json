@@ -1,233 +1,686 @@
 {
-  "medical": {
-    "nouveau": {
-      "label": "Nouveau patient",
-      "summary": "Nouvelle patiente (Sophie Laurent, °1991) - fièvre et gorge, non urgent. RDV demain 14h40 (Dre Mertens), dossier créé, confirmation SMS.",
-      "tags": ["Nouveau dossier", "RDV demain 14h40", "SMS envoyé"],
-      "turns": [
-        ["a", "Cabinet médical du Docteur Mertens, bonjour ! Je suis AlexIA, l'assistante du cabinet. Comment puis-je vous aider ?"],
-        ["c", "Bonjour… je voudrais un rendez-vous, j'ai de la fièvre et mal à la gorge depuis hier soir."],
-        ["a", "Je comprends. Question rapide : avez-vous des difficultés à respirer, ou une douleur dans la poitrine ?"],
-        ["c", "Non non, rien de tout ça. Juste la gorge, et un peu de température."],
-        ["a", "Très bien, rien d'alarmant alors. Êtes-vous déjà patiente du cabinet ?"],
-        ["c", "Non, c'est la première fois. C'est une amie qui m'a recommandé le cabinet."],
-        ["a", "Bienvenue alors ! Puis-je avoir votre nom complet, et votre date de naissance ?"],
-        ["c", "Sophie Laurent, née le 12 mars 1991."],
-        ["a", "Merci Sophie. Et un numéro de GSM pour la confirmation ?"],
-        ["c", "Le 0476, 12, 34, 56."],
-        ["a", "Parfait, votre dossier est créé. La Docteure Mertens a une place demain à 14 heures 40, ou jeudi à 9 heures 20. Vous préférez ?"],
-        ["c", "[relieved] Demain 14h40, c'est parfait."],
-        ["a", "C'est réservé : demain, 14 heures 40. Pensez à votre carte d'identité. Vous recevez la confirmation par SMS, et le cabinet a déjà la synthèse de votre appel. Bon rétablissement, Sophie !"]
-      ]
-    },
-    "connu": {
-      "label": "Patiente reconnue",
-      "summary": "Patiente reconnue (Mme Peeters) - renouvellement prescription + contrôle tension. RDV vendredi 10h20, rappel programmé la veille.",
-      "tags": ["Dossier existant", "RDV vendredi 10h20", "Rappel la veille"],
-      "turns": [
-        ["a", "Cabinet médical du Docteur Mertens, bonjour ! Je suis AlexIA, l'assistante du cabinet. Comment puis-je vous aider ?"],
-        ["c", "Bonjour, c'est Martine Peeters. Il me faudrait un rendez-vous pour renouveler ma prescription."],
-        ["a", "Bonjour Madame Peeters, je retrouve votre dossier. Vous êtes toujours joignable au 0495, 22, 18, 40 ?"],
-        ["c", "C'est toujours ça, oui."],
-        ["a", "Parfait. C'est uniquement pour le renouvellement de votre traitement habituel, ou autre chose à signaler ?"],
-        ["c", "Le renouvellement… et j'aurais bien voulu qu'il regarde ma tension aussi, tant que j'y suis."],
-        ["a", "Je note : renouvellement, plus un contrôle de tension. Le Docteur vous reçoit d'habitude le matin. Il reste jeudi 9 heures 40, ou vendredi 10 heures 20."],
-        ["c", "Vendredi 10h20, plutôt."],
-        ["a", "C'est noté, vendredi 10 heures 20. Tout est dans votre dossier, et vous recevrez un rappel la veille. À vendredi, Madame Peeters !"],
-        ["c", "[warmly] Merci beaucoup, c'était rapide. Au revoir !"],
-        ["a", "Avec plaisir, au revoir !"]
-      ]
-    }
+ "medical": {
+  "nouveau": {
+   "label": "Nouveau patient",
+   "summary": "Nouvelle patiente (Sophie Laurent, °1991) - fièvre et gorge, non urgent. RDV demain 14h40 (Dre Mertens), dossier créé, confirmation SMS.",
+   "tags": [
+    "Nouveau dossier",
+    "RDV demain 14h40",
+    "SMS envoyé"
+   ],
+   "turns": [
+    [
+     "a",
+     "Cabinet médical du Docteur Mertens, bonjour ! Je suis AlexIA, l'assistante du cabinet. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour… je voudrais un rendez-vous, j'ai de la fièvre et mal à la gorge depuis hier soir."
+    ],
+    [
+     "a",
+     "Je comprends. Question rapide : avez-vous des difficultés à respirer, ou une douleur dans la poitrine ?"
+    ],
+    [
+     "c",
+     "Non non, rien de tout ça. Juste la gorge, et un peu de température."
+    ],
+    [
+     "a",
+     "Très bien, rien d'alarmant alors. Êtes-vous déjà patiente du cabinet ?"
+    ],
+    [
+     "c",
+     "Non, c'est la première fois. C'est une amie qui m'a recommandé le cabinet."
+    ],
+    [
+     "a",
+     "Bienvenue alors ! Puis-je avoir votre nom complet, et votre date de naissance ?"
+    ],
+    [
+     "c",
+     "Sophie Laurent, née le 12 mars 1991."
+    ],
+    [
+     "a",
+     "Merci Sophie. Et un numéro de GSM pour la confirmation ?"
+    ],
+    [
+     "c",
+     "Le 0476, 12, 34, 56."
+    ],
+    [
+     "a",
+     "Parfait, votre dossier est créé. La Docteure Mertens a une place demain à 14 heures 40, ou jeudi à 9 heures 20. Vous préférez ?"
+    ],
+    [
+     "c",
+     "[relieved] Demain 14h40, c'est parfait."
+    ],
+    [
+     "a",
+     "C'est réservé : demain, 14 heures 40. Pensez à votre carte d'identité. Vous recevez la confirmation par SMS, et le cabinet a déjà la synthèse de votre appel. Bon rétablissement, Sophie !"
+    ]
+   ]
   },
-  "avocats": {
-    "nouveau": {
-      "label": "Nouveau dossier",
-      "summary": "Nouveau dossier succession (Marc Dubois, défunt : Robert Dubois) - conflit d'intérêts vérifié, délai notaire fin du mois. RDV jeudi 11h30, documents listés par SMS.",
-      "tags": ["Succession", "Conflit vérifié", "RDV jeudi 11h30"],
-      "turns": [
-        ["a", "Cabinet Janssens et associés, bonjour ! Je suis AlexIA, l'assistante du cabinet. En quoi puis-je vous aider ?"],
-        ["c", "Bonjour… c'est pour une succession. Mon père est décédé le mois dernier, et on a besoin d'aide pour la suite."],
-        ["a", "Toutes mes condoléances, Monsieur. Maître Janssens traite ce type de dossier. Puis-je prendre quelques informations, en toute confidentialité ?"],
-        ["c", "Oui, bien sûr, allez-y."],
-        ["a", "Votre nom complet, et êtes-vous déjà client du cabinet ?"],
-        ["c", "Marc Dubois. Et non, c'est la première fois que j'appelle."],
-        ["a", "Merci. Pour vérifier tout conflit d'intérêts : le nom du défunt, et les autres héritiers concernés ?"],
-        ["c", "Mon père, Robert Dubois. Les héritiers, c'est ma sœur Anne et moi."],
-        ["a", "C'est vérifié, aucun conflit : le cabinet peut vous représenter. Y a-t-il un délai ou une urgence particulière ?"],
-        ["c", "Oui, le notaire nous demande une réponse avant la fin du mois."],
-        ["a", "Compris, je marque le dossier comme prioritaire. Maître Janssens peut vous recevoir jeudi à 11 heures 30, ou vendredi à 9 heures."],
-        ["c", "Jeudi 11h30, ce sera très bien."],
-        ["a", "Réservé. Vous recevrez la confirmation par SMS, avec la liste des documents à apporter. Le dossier est créé, et Maître Janssens a déjà la synthèse. Bon courage, Monsieur Dubois."]
-      ]
-    },
-    "connu": {
-      "label": "Cliente reconnue",
-      "summary": "Cliente reconnue (Mme Lambert, dossier bail commercial) - pièce adverse reçue, envoi par mail. Callback de Maître Janssens enregistré à 17h avec contexte complet.",
-      "tags": ["Dossier en cours", "Callback 17h", "Confidentiel"],
-      "turns": [
-        ["a", "Cabinet Janssens et associés, bonjour ! Je suis AlexIA, l'assistante du cabinet. En quoi puis-je vous aider ?"],
-        ["c", "Bonjour, Isabelle Lambert à l'appareil. C'est au sujet de mon dossier de bail commercial."],
-        ["a", "Bonjour Madame Lambert, je retrouve votre dossier, suivi par Maître Janssens. Que puis-je lui transmettre ?"],
-        ["c", "J'ai reçu la réponse de la partie adverse ce matin… il faudrait vraiment qu'il me rappelle avant qu'on réponde."],
-        ["a", "Bien noté. Le document, vous pouvez l'envoyer par mail au cabinet, ou préférez-vous le déposer ?"],
-        ["c", "Je vous l'envoie par mail dans l'heure."],
-        ["a", "Parfait. Maître Janssens est en audience jusqu'à 16 heures. Je programme un rappel entre 16 heures 30 et 17 heures 30, toujours au 0478, 45, 67, 89 ?"],
-        ["c", "C'est bien ça. Plutôt vers 17 heures, si possible."],
-        ["a", "Rappel enregistré à 17 heures, avec votre message et le contexte du dossier. Il aura tout sous les yeux avant de vous appeler. Bonne journée, Madame Lambert !"],
-        ["c", "Merci, bonne journée à vous."]
-      ]
-    }
-  },
-  "immobilier": {
-    "nouveau": {
-      "label": "Nouveau lead",
-      "summary": "Lead Immoweb (Julien Moreau) - achat pour habiter, accord bancaire OK, budget aligné. Visite samedi 10h30 confirmée, fiche complète transmise à l'agent.",
-      "tags": ["Lead chaud", "Visite samedi 10h30", "Financement OK"],
-      "turns": [
-        ["a", "Agence Thomas Immobilier, bonjour ! Je suis AlexIA, l'assistante de l'agence. Comment puis-je vous aider ?"],
-        ["c", "Bonjour ! Je vous appelle pour le trois façades à Ixelles, vu sur Immoweb. Il est toujours disponible ?"],
-        ["a", "Oui, il est toujours disponible ! Je peux organiser une visite. D'abord, puis-je avoir votre nom ?"],
-        ["c", "Julien Moreau."],
-        ["a", "Merci Monsieur Moreau. Vous cherchez pour habiter, ou pour investir ?"],
-        ["c", "Pour habiter. On cherche depuis six mois avec ma compagne, on connaît bien le quartier."],
-        ["a", "Très bien. Et côté financement, avez-vous déjà un accord de principe de votre banque ?"],
-        ["c", "Oui, l'accord est arrivé la semaine passée. On peut aller jusqu'à 520."],
-        ["a", "C'est parfaitement aligné avec le bien. Un numéro de GSM pour la confirmation ?"],
-        ["c", "Le 0486, 77, 21, 09."],
-        ["a", "Merci. Thomas a un créneau samedi à 10 heures 30, ou lundi à 17 heures 45, pour la visite."],
-        ["c", "[excited] Samedi 10h30, super !"],
-        ["a", "Confirmé : samedi, 10 heures 30, sur place. Vous recevez l'adresse exacte par SMS, et Thomas reçoit votre fiche complète à l'instant. À samedi, Monsieur Moreau !"]
-      ]
-    },
-    "connu": {
-      "label": "Vendeur reconnu",
-      "summary": "Vendeur reconnu (M. Hendrickx, maison à Uccle) - demande le point après les 3 visites du week-end. Callback de Thomas programmé aujourd'hui 14h.",
-      "tags": ["Mandat en cours", "3 visites", "Callback 14h"],
-      "turns": [
-        ["a", "Agence Thomas Immobilier, bonjour ! Je suis AlexIA, l'assistante de l'agence. Comment puis-je vous aider ?"],
-        ["c", "Bonjour, Paul Hendrickx. C'est au sujet de la vente de ma maison à Uccle."],
-        ["a", "Bonjour Monsieur Hendrickx ! Je retrouve votre mandat : la maison de l'avenue Brugmann. Que puis-je faire pour vous ?"],
-        ["c", "Il y a eu les visites ce week-end… je voulais savoir ce que ça a donné."],
-        ["a", "Je vois trois visites samedi dans le dossier, avec deux retours déjà encodés. Pour le détail et la suite, c'est Thomas qui vous fait le point : il est en visite ce matin."],
-        ["c", "Ah, il peut me rappeler quand ?"],
-        ["a", "Il est libre entre 14 heures et 15 heures. Je programme le rappel à 14 heures, toujours au 0475, 33, 90, 12 ?"],
-        ["c", "Parfait, 14 heures."],
-        ["a", "C'est enregistré : Thomas vous appelle à 14 heures avec le compte rendu des trois visites. Bonne journée, Monsieur Hendrickx !"],
-        ["c", "Merci bien, à tantôt."]
-      ]
-    }
-  },
-  "construction": {
-    "nouveau": {
-      "label": "Nouvelle demande",
-      "summary": "Nouveau client (M. Rossi, Namur) - fuite toiture tuiles qui s'aggrave. Photos par WhatsApp demandées, visite technique jeudi 8h, dossier marqué urgent.",
-      "tags": ["Devis toiture", "Urgent", "Visite jeudi 8h"],
-      "turns": [
-        ["a", "Entreprise Delvaux Toitures, bonjour ! Je suis AlexIA, l'assistante de l'entreprise. Comment puis-je vous aider ?"],
-        ["c", "Bonjour… j'aurais besoin d'un devis pour ma toiture. Il y a une fuite, et franchement, ça s'aggrave."],
-        ["a", "Je comprends, une fuite ça n'attend pas. C'est une toiture en tuiles, en ardoises, ou une toiture plate ?"],
-        ["c", "Des tuiles. Une maison deux façades."],
-        ["a", "Merci. Puis-je avoir votre nom, et l'adresse du chantier ?"],
-        ["c", "Antonio Rossi, rue des Carmes 27, à Namur."],
-        ["a", "Noté. Un GSM pour vous joindre, et pour l'envoi de la confirmation ?"],
-        ["c", "0489, 55, 43, 21."],
-        ["a", "Parfait. Si vous pouvez, envoyez deux ou trois photos de la fuite sur ce même numéro par WhatsApp : l'équipe préparera mieux la visite."],
-        ["c", "Ah oui, bonne idée, je fais ça tantôt."],
-        ["a", "Vu la fuite, je vous place en priorité : visite technique jeudi à 8 heures, avant le chantier du jour. Ça vous va ?"],
-        ["c", "[relieved] Jeudi 8 heures, impeccable. Merci hein !"],
-        ["a", "C'est réservé, Monsieur Rossi. Confirmation par SMS, la fiche chantier est créée, et l'équipe a déjà le contexte. À jeudi !"]
-      ]
-    },
-    "connu": {
-      "label": "Client reconnu",
-      "summary": "Client reconnu (M. Georges, chantier annexe en cours) - question planning après la pluie. Chantier vu au dossier : reprise confirmée, callback du chef d'équipe à midi.",
-      "tags": ["Chantier en cours", "Callback midi", "Planning"],
-      "turns": [
-        ["a", "Entreprise Delvaux Toitures, bonjour ! Je suis AlexIA, l'assistante de l'entreprise. Comment puis-je vous aider ?"],
-        ["c", "Oui bonjour, c'est Monsieur Georges, pour le chantier de l'annexe à Wépion."],
-        ["a", "Bonjour Monsieur Georges ! Je retrouve votre chantier : l'annexe, démarré la semaine passée. Que puis-je faire ?"],
-        ["c", "Avec la pluie d'hier, je voulais savoir si l'équipe passe toujours demain comme prévu."],
-        ["a", "D'après le planning, l'équipe est bien prévue chez vous demain à 7 heures 30. Pour confirmer à cent pour cent après la météo d'hier, je préfère que le chef d'équipe vous le valide lui-même."],
-        ["c", "Ah oui, très bien, comme ça je m'organise."],
-        ["a", "Il est sur chantier ce matin. Je programme son appel vers midi, toujours au 0472, 18, 65, 30 ?"],
-        ["c", "C'est ça oui, midi c'est très bien."],
-        ["a", "C'est enregistré : rappel à midi avec la confirmation du passage de demain. Votre question est notée dans la fiche chantier. Bonne journée, Monsieur Georges !"],
-        ["c", "Merci beaucoup, bonne journée."]
-      ]
-    }
-  },
-  "horeca": {
-    "nouveau": {
-      "label": "New guest (EN)",
-      "summary": "Nouvelle cliente anglophone (Emily Carter) - table 4 pers. vendredi 20h, terrasse, anniversaire noté. Prise en anglais, confirmation et rappel SMS.",
-      "tags": ["EN · 4 pers.", "Terrasse", "Anniversaire"],
-      "turns": [
-        ["a", "La Table d'Augustin, good evening! This is AlexIA, the restaurant's assistant. How may I help you?"],
-        ["c", "Oh great, you speak English! I'd like a table for four, on Friday evening, around eight?"],
-        ["a", "Of course! Friday, eight pm, four guests. Would you prefer inside, or on the terrace?"],
-        ["c", "[excited] The terrace if possible - and actually, it's my husband's birthday!"],
-        ["a", "Wonderful! Terrace it is, and the team will prepare a little attention for the birthday. May I have your name?"],
-        ["c", "Emily Carter."],
-        ["a", "Thank you Emily. And a mobile number for the confirmation?"],
-        ["c", "It's plus 44, 7700, 900, 123."],
-        ["a", "Perfect. Any allergies or dietary requirements I should note for the kitchen?"],
-        ["c", "One of us is vegetarian, actually."],
-        ["a", "Noted - one vegetarian guest, the chef will have options ready. So: Friday, eight pm, four guests, terrace, birthday. You'll receive a confirmation by SMS, and a reminder on Friday morning. See you then, Emily!"],
-        ["c", "That's brilliant, thank you so much!"]
-      ]
-    },
-    "connu": {
-      "label": "Habituée (FR)",
-      "summary": "Habituée reconnue (Mme Rousseau) - sa table près de la fenêtre réservée pour vendredi 19h30, préférences retrouvées automatiquement.",
-      "tags": ["Habituée", "Table fenêtre", "Vendredi 19h30"],
-      "turns": [
-        ["a", "La Table d'Augustin, bonsoir ! Je suis AlexIA, l'assistante du restaurant. Comment puis-je vous aider ?"],
-        ["c", "Bonsoir, c'est Madame Rousseau. Je voudrais réserver pour vendredi soir, comme d'habitude."],
-        ["a", "Bonsoir Madame Rousseau, quel plaisir ! Je retrouve vos préférences : une table pour deux, près de la fenêtre. Vendredi 19 heures 30, comme les dernières fois ?"],
-        ["c", "[warmly] Exactement. Vous me connaissez mieux que mon mari."],
-        ["a", "C'est mon métier de me souvenir ! Votre table près de la fenêtre est réservée. Toujours l'eau pétillante en arrivant ?"],
-        ["c", "Toujours. Ah, et mon mari évite le gluten maintenant."],
-        ["a", "Je le note dans votre fiche : sans gluten pour Monsieur. Le chef sera prévenu. Vendredi, 19 heures 30, votre table habituelle. À vendredi, Madame Rousseau !"],
-        ["c", "Merci, à vendredi !"]
-      ]
-    }
-  },
-  "automobile": {
-    "nouveau": {
-      "label": "Nouveau client",
-      "summary": "Nouveau client (M. Wouters, Golf 7 de 2016) - bruit suspension avant + CT dans 3 semaines. Diagnostic vendredi 10h, fiche véhicule créée avec plaque.",
-      "tags": ["Diagnostic", "CT dans 3 sem.", "Vendredi 10h"],
-      "turns": [
-        ["a", "Garage Central Wavre, bonjour ! Je suis AlexIA, l'assistante du garage. Comment puis-je vous aider ?"],
-        ["c", "Bonjour. J'ai un bruit à la suspension avant… et le contrôle technique est dans trois semaines, donc je stresse un peu."],
-        ["a", "On va regarder ça à temps, pas d'inquiétude. Quel est le modèle et l'année du véhicule ?"],
-        ["c", "Une Golf 7, de 2016."],
-        ["a", "Merci. Votre nom, et la plaque d'immatriculation ?"],
-        ["c", "Stef Wouters. La plaque, c'est 1, A B C, 2 4 8."],
-        ["a", "Noté. Et un GSM pour la confirmation et le devis ?"],
-        ["c", "0497, 62, 80, 14."],
-        ["a", "Parfait. Pour un diagnostic complet de la suspension, il faut une heure. Vendredi 10 heures, ou lundi 8 heures 30 ?"],
-        ["c", "Vendredi 10 heures."],
-        ["a", "Réservé : vendredi, 10 heures, bien avant votre échéance de contrôle. La fiche véhicule est créée, et vous recevrez le devis par SMS après l'inspection. À vendredi, Monsieur Wouters !"],
-        ["c", "[relieved] Nickel, merci beaucoup."]
-      ]
-    },
-    "connu": {
-      "label": "Client reconnu",
-      "summary": "Client reconnu (M. Wouters, Golf 7 - historique retrouvé) - entretien annuel dû depuis 11 mois + courroie à prévoir. RDV mardi 8h, véhicule de courtoisie réservé.",
-      "tags": ["Historique véhicule", "Entretien + courroie", "Mardi 8h"],
-      "turns": [
-        ["a", "Garage Central Wavre, bonjour ! Je suis AlexIA, l'assistante du garage. Comment puis-je vous aider ?"],
-        ["c", "Bonjour, c'est Stef Wouters. Il faudrait prévoir l'entretien de la Golf."],
-        ["a", "Bonjour Monsieur Wouters ! Je retrouve votre Golf 7 : dernier entretien il y a onze mois, et je vois que la courroie était à surveiller au prochain passage."],
-        ["c", "Ah oui tiens, c'est vrai qu'il en avait parlé."],
-        ["a", "Je prévois donc l'entretien complet, plus le contrôle de la courroie. Comptez la demi-journée. Vous avez besoin d'un véhicule de courtoisie ?"],
-        ["c", "Oui, si c'est possible, je travaille à Bruxelles."],
-        ["a", "C'est possible. Mardi à 8 heures, la voiture de courtoisie est disponible. Ça vous convient ?"],
-        ["c", "Mardi 8 heures, c'est bon pour moi."],
-        ["a", "Réservé : mardi 8 heures, entretien plus courroie, véhicule de courtoisie prêt à votre arrivée. Confirmation par SMS. À mardi, Monsieur Wouters !"],
-        ["c", "Super, merci. À mardi !"]
-      ]
-    }
+  "connu": {
+   "label": "Patiente reconnue",
+   "summary": "Patiente reconnue (Mme Peeters) - renouvellement prescription + contrôle tension. RDV vendredi 10h20, rappel programmé la veille.",
+   "tags": [
+    "Dossier existant",
+    "RDV vendredi 10h20",
+    "Rappel la veille"
+   ],
+   "turns": [
+    [
+     "a",
+     "Cabinet médical du Docteur Mertens, bonjour ! Je suis AlexIA, l'assistante du cabinet. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour, c'est Martine Peeters. Il me faudrait un rendez-vous pour renouveler ma prescription."
+    ],
+    [
+     "a",
+     "Bonjour Madame Peeters, je retrouve votre dossier. Vous êtes toujours joignable au 0495, 22, 18, 40 ?"
+    ],
+    [
+     "c",
+     "C'est toujours ça, oui."
+    ],
+    [
+     "a",
+     "Parfait. C'est uniquement pour le renouvellement de votre traitement habituel, ou autre chose à signaler ?"
+    ],
+    [
+     "c",
+     "Le renouvellement… et j'aurais bien voulu qu'il regarde ma tension aussi, tant que j'y suis."
+    ],
+    [
+     "a",
+     "Je note : renouvellement, plus un contrôle de tension. Le Docteur vous reçoit d'habitude le matin. Il reste jeudi 9 heures 40, ou vendredi 10 heures 20."
+    ],
+    [
+     "c",
+     "Vendredi 10h20, plutôt."
+    ],
+    [
+     "a",
+     "C'est noté, vendredi 10 heures 20. Tout est dans votre dossier, et vous recevrez un rappel la veille. À vendredi, Madame Peeters !"
+    ],
+    [
+     "c",
+     "[warmly] Merci beaucoup, c'était rapide. Au revoir !"
+    ],
+    [
+     "a",
+     "Avec plaisir, au revoir !"
+    ]
+   ]
   }
+ },
+ "avocats": {
+  "nouveau": {
+   "label": "Nouveau dossier",
+   "summary": "Nouveau dossier succession (Marc Dubois, défunt : Robert Dubois) - conflit d'intérêts vérifié, délai notaire fin du mois. RDV jeudi 11h30, documents listés par SMS.",
+   "tags": [
+    "Succession",
+    "Conflit vérifié",
+    "RDV jeudi 11h30"
+   ],
+   "turns": [
+    [
+     "a",
+     "Cabinet Janssens et associés, bonjour ! Je suis AlexIA, l'assistante du cabinet. En quoi puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour… c'est pour une succession. Mon père est décédé le mois dernier, et on a besoin d'aide pour la suite."
+    ],
+    [
+     "a",
+     "Toutes mes condoléances, Monsieur. Maître Janssens traite ce type de dossier. Puis-je prendre quelques informations, en toute confidentialité ?"
+    ],
+    [
+     "c",
+     "Oui, bien sûr, allez-y."
+    ],
+    [
+     "a",
+     "Votre nom complet, et êtes-vous déjà client du cabinet ?"
+    ],
+    [
+     "c",
+     "Marc Dubois. Et non, c'est la première fois que j'appelle."
+    ],
+    [
+     "a",
+     "Merci. Pour vérifier tout conflit d'intérêts : le nom du défunt, et les autres héritiers concernés ?"
+    ],
+    [
+     "c",
+     "Mon père, Robert Dubois. Les héritiers, c'est ma sœur Anne et moi."
+    ],
+    [
+     "a",
+     "C'est vérifié, aucun conflit : le cabinet peut vous représenter. Y a-t-il un délai ou une urgence particulière ?"
+    ],
+    [
+     "c",
+     "Oui, le notaire nous demande une réponse avant la fin du mois."
+    ],
+    [
+     "a",
+     "Compris, je marque le dossier comme prioritaire. Maître Janssens peut vous recevoir jeudi à 11 heures 30, ou vendredi à 9 heures."
+    ],
+    [
+     "c",
+     "Jeudi 11h30, ce sera très bien."
+    ],
+    [
+     "a",
+     "Réservé. Vous recevrez la confirmation par SMS, avec la liste des documents à apporter. Le dossier est créé, et Maître Janssens a déjà la synthèse. Bon courage, Monsieur Dubois."
+    ]
+   ]
+  },
+  "connu": {
+   "label": "Cliente reconnue",
+   "summary": "Cliente reconnue (Mme Lambert, dossier bail commercial) - pièce adverse reçue, envoi par mail. Callback de Maître Janssens enregistré à 17h avec contexte complet.",
+   "tags": [
+    "Dossier en cours",
+    "Callback 17h",
+    "Confidentiel"
+   ],
+   "turns": [
+    [
+     "a",
+     "Cabinet Janssens et associés, bonjour ! Je suis AlexIA, l'assistante du cabinet. En quoi puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour, Isabelle Lambert à l'appareil. C'est au sujet de mon dossier de bail commercial."
+    ],
+    [
+     "a",
+     "Bonjour Madame Lambert, je retrouve votre dossier, suivi par Maître Janssens. Que puis-je lui transmettre ?"
+    ],
+    [
+     "c",
+     "J'ai reçu la réponse de la partie adverse ce matin… il faudrait vraiment qu'il me rappelle avant qu'on réponde."
+    ],
+    [
+     "a",
+     "Bien noté. Le document, vous pouvez l'envoyer par mail au cabinet, ou préférez-vous le déposer ?"
+    ],
+    [
+     "c",
+     "Je vous l'envoie par mail dans l'heure."
+    ],
+    [
+     "a",
+     "Parfait. Maître Janssens est en audience jusqu'à 16 heures. Je programme un rappel entre 16 heures 30 et 17 heures 30, toujours au 0478, 45, 67, 89 ?"
+    ],
+    [
+     "c",
+     "C'est bien ça. Plutôt vers 17 heures, si possible."
+    ],
+    [
+     "a",
+     "Rappel enregistré à 17 heures, avec votre message et le contexte du dossier. Il aura tout sous les yeux avant de vous appeler. Bonne journée, Madame Lambert !"
+    ],
+    [
+     "c",
+     "Merci, bonne journée à vous."
+    ]
+   ]
+  }
+ },
+ "immobilier": {
+  "nouveau": {
+   "label": "Nouveau lead",
+   "summary": "Lead Immoweb (Julien Moreau) - achat pour habiter, accord bancaire OK, budget aligné. Visite samedi 10h30 confirmée, fiche complète transmise à l'agent.",
+   "tags": [
+    "Lead chaud",
+    "Visite samedi 10h30",
+    "Financement OK"
+   ],
+   "turns": [
+    [
+     "a",
+     "Agence Thomas Immobilier, bonjour ! Je suis AlexIA, l'assistante de l'agence. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour ! Je vous appelle pour le trois façades à Ixelles, vu sur Immoweb. Il est toujours disponible ?"
+    ],
+    [
+     "a",
+     "Oui, il est toujours disponible ! Je peux organiser une visite. D'abord, puis-je avoir votre nom ?"
+    ],
+    [
+     "c",
+     "Julien Moreau."
+    ],
+    [
+     "a",
+     "Merci Monsieur Moreau. Vous cherchez pour habiter, ou pour investir ?"
+    ],
+    [
+     "c",
+     "Pour habiter. On cherche depuis six mois avec ma compagne, on connaît bien le quartier."
+    ],
+    [
+     "a",
+     "Très bien. Et côté financement, avez-vous déjà un accord de principe de votre banque ?"
+    ],
+    [
+     "c",
+     "Oui, l'accord est arrivé la semaine passée. On peut aller jusqu'à 520."
+    ],
+    [
+     "a",
+     "C'est parfaitement aligné avec le bien. Un numéro de GSM pour la confirmation ?"
+    ],
+    [
+     "c",
+     "Le 0486, 77, 21, 09."
+    ],
+    [
+     "a",
+     "Merci. Thomas a un créneau samedi à 10 heures 30, ou lundi à 17 heures 45, pour la visite."
+    ],
+    [
+     "c",
+     "[excited] Samedi 10h30, super !"
+    ],
+    [
+     "a",
+     "Confirmé : samedi, 10 heures 30, sur place. Vous recevez l'adresse exacte par SMS, et Thomas reçoit votre fiche complète à l'instant. À samedi, Monsieur Moreau !"
+    ]
+   ]
+  },
+  "connu": {
+   "label": "Vendeur reconnu",
+   "summary": "Vendeur reconnu (M. Hendrickx, maison à Uccle) - demande le point après les 3 visites du week-end. Callback de Thomas programmé aujourd'hui 14h.",
+   "tags": [
+    "Mandat en cours",
+    "3 visites",
+    "Callback 14h"
+   ],
+   "turns": [
+    [
+     "a",
+     "Agence Thomas Immobilier, bonjour ! Je suis AlexIA, l'assistante de l'agence. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour, Paul Hendrickx. C'est au sujet de la vente de ma maison à Uccle."
+    ],
+    [
+     "a",
+     "Bonjour Monsieur Hendrickx ! Je retrouve votre mandat : la maison de l'avenue Brugmann. Que puis-je faire pour vous ?"
+    ],
+    [
+     "c",
+     "Il y a eu les visites ce week-end… je voulais savoir ce que ça a donné."
+    ],
+    [
+     "a",
+     "Je vois trois visites samedi dans le dossier, avec deux retours déjà encodés. Pour le détail et la suite, c'est Thomas qui vous fait le point : il est en visite ce matin."
+    ],
+    [
+     "c",
+     "Ah, il peut me rappeler quand ?"
+    ],
+    [
+     "a",
+     "Il est libre entre 14 heures et 15 heures. Je programme le rappel à 14 heures, toujours au 0475, 33, 90, 12 ?"
+    ],
+    [
+     "c",
+     "Parfait, 14 heures."
+    ],
+    [
+     "a",
+     "C'est enregistré : Thomas vous appelle à 14 heures avec le compte rendu des trois visites. Bonne journée, Monsieur Hendrickx !"
+    ],
+    [
+     "c",
+     "Merci bien, à tantôt."
+    ]
+   ]
+  }
+ },
+ "construction": {
+  "nouveau": {
+   "label": "Nouvelle demande",
+   "summary": "Nouveau client (M. Rossi, Namur) - fuite toiture tuiles qui s'aggrave. Photos par WhatsApp demandées, visite technique jeudi 8h, dossier marqué urgent.",
+   "tags": [
+    "Devis toiture",
+    "Urgent",
+    "Visite jeudi 8h"
+   ],
+   "turns": [
+    [
+     "a",
+     "Entreprise Delvaux Toitures, bonjour ! Je suis AlexIA, l'assistante de l'entreprise. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour… j'aurais besoin d'un devis pour ma toiture. Il y a une fuite, et franchement, ça s'aggrave."
+    ],
+    [
+     "a",
+     "Je comprends, une fuite ça n'attend pas. C'est une toiture en tuiles, en ardoises, ou une toiture plate ?"
+    ],
+    [
+     "c",
+     "Des tuiles. Une maison deux façades."
+    ],
+    [
+     "a",
+     "Merci. Puis-je avoir votre nom, et l'adresse du chantier ?"
+    ],
+    [
+     "c",
+     "Antonio Rossi, rue des Carmes 27, à Namur."
+    ],
+    [
+     "a",
+     "Noté. Un GSM pour vous joindre, et pour l'envoi de la confirmation ?"
+    ],
+    [
+     "c",
+     "0489, 55, 43, 21."
+    ],
+    [
+     "a",
+     "Parfait. Si vous pouvez, envoyez deux ou trois photos de la fuite sur ce même numéro par WhatsApp : l'équipe préparera mieux la visite."
+    ],
+    [
+     "c",
+     "Ah oui, bonne idée, je fais ça tantôt."
+    ],
+    [
+     "a",
+     "Vu la fuite, je vous place en priorité : visite technique jeudi à 8 heures, avant le chantier du jour. Ça vous va ?"
+    ],
+    [
+     "c",
+     "[relieved] Jeudi 8 heures, impeccable. Merci hein !"
+    ],
+    [
+     "a",
+     "C'est réservé, Monsieur Rossi. Confirmation par SMS, la fiche chantier est créée, et l'équipe a déjà le contexte. À jeudi !"
+    ]
+   ]
+  },
+  "connu": {
+   "label": "Client reconnu",
+   "summary": "Client reconnu (M. Georges, chantier annexe en cours) - question planning après la pluie. Chantier vu au dossier : reprise confirmée, callback du chef d'équipe à midi.",
+   "tags": [
+    "Chantier en cours",
+    "Callback midi",
+    "Planning"
+   ],
+   "turns": [
+    [
+     "a",
+     "Entreprise Delvaux Toitures, bonjour ! Je suis AlexIA, l'assistante de l'entreprise. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Oui bonjour, c'est Monsieur Georges, pour le chantier de l'annexe à Wépion."
+    ],
+    [
+     "a",
+     "Bonjour Monsieur Georges ! Je retrouve votre chantier : l'annexe, démarré la semaine passée. Que puis-je faire ?"
+    ],
+    [
+     "c",
+     "Avec la pluie d'hier, je voulais savoir si l'équipe passe toujours demain comme prévu."
+    ],
+    [
+     "a",
+     "D'après le planning, l'équipe est bien prévue chez vous demain à 7 heures 30. Pour confirmer à cent pour cent après la météo d'hier, je préfère que le chef d'équipe vous le valide lui-même."
+    ],
+    [
+     "c",
+     "Ah oui, très bien, comme ça je m'organise."
+    ],
+    [
+     "a",
+     "Il est sur chantier ce matin. Je programme son appel vers midi, toujours au 0472, 18, 65, 30 ?"
+    ],
+    [
+     "c",
+     "C'est ça oui, midi c'est très bien."
+    ],
+    [
+     "a",
+     "C'est enregistré : rappel à midi avec la confirmation du passage de demain. Votre question est notée dans la fiche chantier. Bonne journée, Monsieur Georges !"
+    ],
+    [
+     "c",
+     "Merci beaucoup, bonne journée."
+    ]
+   ]
+  }
+ },
+ "horeca": {
+  "nouveau": {
+   "label": "New guest (EN)",
+   "summary": "Nouvelle cliente anglophone (Emily Carter) - table 4 pers. vendredi 20h, terrasse, anniversaire noté. Prise en anglais, confirmation et rappel SMS.",
+   "tags": [
+    "EN · 4 pers.",
+    "Terrasse",
+    "Anniversaire"
+   ],
+   "turns": [
+    [
+     "a",
+     "La Table d'Augustin, bonsoir ! Je suis AlexIA, l'assistante du restaurant. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Oh… do you speak English? I'd like a table for four, on Friday evening, around eight?"
+    ],
+    [
+     "a",
+     "Of course! Friday, eight pm, four guests. Would you prefer inside, or on the terrace?"
+    ],
+    [
+     "c",
+     "[excited] The terrace if possible - and actually, it's my husband's birthday!"
+    ],
+    [
+     "a",
+     "Wonderful! Terrace it is, and the team will prepare a little attention for the birthday. May I have your name?"
+    ],
+    [
+     "c",
+     "Emily Carter."
+    ],
+    [
+     "a",
+     "Thank you Emily. And a mobile number for the confirmation?"
+    ],
+    [
+     "c",
+     "It's plus 44, 7700, 900, 123."
+    ],
+    [
+     "a",
+     "Perfect. Any allergies or dietary requirements I should note for the kitchen?"
+    ],
+    [
+     "c",
+     "One of us is vegetarian, actually."
+    ],
+    [
+     "a",
+     "Noted - one vegetarian guest, the chef will have options ready. So: Friday, eight pm, four guests, terrace, birthday. You'll receive a confirmation by SMS, and a reminder on Friday morning. See you then, Emily!"
+    ],
+    [
+     "c",
+     "That's brilliant, thank you so much!"
+    ]
+   ]
+  },
+  "connu": {
+   "label": "Habituée (FR)",
+   "summary": "Habituée reconnue (Mme Rousseau) - sa table près de la fenêtre réservée pour vendredi 19h30, préférences retrouvées automatiquement.",
+   "tags": [
+    "Habituée",
+    "Table fenêtre",
+    "Vendredi 19h30"
+   ],
+   "turns": [
+    [
+     "a",
+     "La Table d'Augustin, bonsoir ! Je suis AlexIA, l'assistante du restaurant. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonsoir, c'est Madame Rousseau. Je voudrais réserver pour vendredi soir, comme d'habitude."
+    ],
+    [
+     "a",
+     "Bonsoir Madame Rousseau, quel plaisir ! Je retrouve vos préférences : une table pour deux, près de la fenêtre. Vendredi 19 heures 30, comme les dernières fois ?"
+    ],
+    [
+     "c",
+     "[warmly] Exactement. Vous me connaissez mieux que mon mari."
+    ],
+    [
+     "a",
+     "C'est mon métier de me souvenir ! Votre table près de la fenêtre est réservée. Toujours l'eau pétillante en arrivant ?"
+    ],
+    [
+     "c",
+     "Toujours. Ah, et mon mari évite le gluten maintenant."
+    ],
+    [
+     "a",
+     "Je le note dans votre fiche : sans gluten pour Monsieur. Le chef sera prévenu. Vendredi, 19 heures 30, votre table habituelle. À vendredi, Madame Rousseau !"
+    ],
+    [
+     "c",
+     "Merci, à vendredi !"
+    ]
+   ]
+  }
+ },
+ "automobile": {
+  "nouveau": {
+   "label": "Nouveau client",
+   "summary": "Nouveau client (M. Wouters, Golf 7 de 2016) - bruit suspension avant + CT dans 3 semaines. Diagnostic vendredi 10h, fiche véhicule créée avec plaque.",
+   "tags": [
+    "Diagnostic",
+    "CT dans 3 sem.",
+    "Vendredi 10h"
+   ],
+   "turns": [
+    [
+     "a",
+     "Garage Central Wavre, bonjour ! Je suis AlexIA, l'assistante du garage. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour. J'ai un bruit à la suspension avant… et le contrôle technique est dans trois semaines, donc je stresse un peu."
+    ],
+    [
+     "a",
+     "On va regarder ça à temps, pas d'inquiétude. Quel est le modèle et l'année du véhicule ?"
+    ],
+    [
+     "c",
+     "Une Golf 7, de 2016."
+    ],
+    [
+     "a",
+     "Merci. Votre nom, et la plaque d'immatriculation ?"
+    ],
+    [
+     "c",
+     "Stef Wouters. La plaque, c'est 1, A B C, 2 4 8."
+    ],
+    [
+     "a",
+     "Noté. Et un GSM pour la confirmation et le devis ?"
+    ],
+    [
+     "c",
+     "0497, 62, 80, 14."
+    ],
+    [
+     "a",
+     "Parfait. Pour un diagnostic complet de la suspension, il faut une heure. Vendredi 10 heures, ou lundi 8 heures 30 ?"
+    ],
+    [
+     "c",
+     "Vendredi 10 heures."
+    ],
+    [
+     "a",
+     "Réservé : vendredi, 10 heures, bien avant votre échéance de contrôle. La fiche véhicule est créée, et vous recevrez le devis par SMS après l'inspection. À vendredi, Monsieur Wouters !"
+    ],
+    [
+     "c",
+     "[relieved] Nickel, merci beaucoup."
+    ]
+   ]
+  },
+  "connu": {
+   "label": "Client reconnu",
+   "summary": "Client reconnu (M. Wouters, Golf 7 - historique retrouvé) - entretien annuel dû depuis 11 mois + courroie à prévoir. RDV mardi 8h, véhicule de courtoisie réservé.",
+   "tags": [
+    "Historique véhicule",
+    "Entretien + courroie",
+    "Mardi 8h"
+   ],
+   "turns": [
+    [
+     "a",
+     "Garage Central Wavre, bonjour ! Je suis AlexIA, l'assistante du garage. Comment puis-je vous aider ?"
+    ],
+    [
+     "c",
+     "Bonjour, c'est Stef Wouters. Il faudrait prévoir l'entretien de la Golf."
+    ],
+    [
+     "a",
+     "Bonjour Monsieur Wouters ! Je retrouve votre Golf 7 : dernier entretien il y a onze mois, et je vois que la courroie était à surveiller au prochain passage."
+    ],
+    [
+     "c",
+     "Ah oui tiens, c'est vrai qu'il en avait parlé."
+    ],
+    [
+     "a",
+     "Je prévois donc l'entretien complet, plus le contrôle de la courroie. Comptez la demi-journée. Vous avez besoin d'un véhicule de courtoisie ?"
+    ],
+    [
+     "c",
+     "Oui, si c'est possible, je travaille à Bruxelles."
+    ],
+    [
+     "a",
+     "C'est possible. Mardi à 8 heures, la voiture de courtoisie est disponible. Ça vous convient ?"
+    ],
+    [
+     "c",
+     "Mardi 8 heures, c'est bon pour moi."
+    ],
+    [
+     "a",
+     "Réservé : mardi 8 heures, entretien plus courroie, véhicule de courtoisie prêt à votre arrivée. Confirmation par SMS. À mardi, Monsieur Wouters !"
+    ],
+    [
+     "c",
+     "Super, merci. À mardi !"
+    ]
+   ]
+  }
+ }
 }
