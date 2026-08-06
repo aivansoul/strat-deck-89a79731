@@ -2887,5 +2887,5 @@ section.sec:has(.demo-stage) { padding: 0; }
   .btn { padding: 11px 22px; font-size: 13px; }
   .nav .btn { padding: 9px 16px; font-size: 12.5px; }
   /* plus d'air entre le titre et la rangée de boutons */
-  .hero-foot { margin-top: 52px; padding-top: 30px; }
+  .hero-foot { margin-top: 84px; padding-top: 34px; }
 }
