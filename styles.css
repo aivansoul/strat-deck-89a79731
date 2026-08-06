@@ -2822,3 +2822,9 @@ section.sec:has(.demo-stage) { padding: 0; }
 .hero .btn-ghost:hover,
 .finalcta .btn-ghost:hover { background: #fff; color: var(--gold-deep); border-color: var(--gold); }
 .btn-ghost:hover .play { fill: var(--gold-deep); }
+
+/* Pages à fond clair : logo noir dès le chargement (le blanc est réservé
+   au hero sombre du pilier, qui garde la bascule au scroll) */
+.nav.nav--solid .logo-word--white { display: none; }
+.nav.nav--solid .logo-word--dark { display: block; }
+.nav.nav--solid .logo-text .logo-spit { color: var(--ink); }
