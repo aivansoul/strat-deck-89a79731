@@ -2859,3 +2859,18 @@ section.sec:has(.demo-stage) { padding: 0; }
   .hero .cta-note svg { width: 13px; height: 13px; flex: none; }
   .hero .cta-note span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
+
+/* Hero mobile : plus d'air entre le titre et le body — les garanties
+   (« Réponse sous 1h ») passent sous la fold du premier écran */
+@media (max-width: 640px) {
+  .hero-foot { margin-top: clamp(28px, 6svh, 64px); }
+  /* les garanties commencent pile sous la fold, quelle que soit la hauteur d'écran */
+  .hero-facts { margin-top: max(18px, calc(100svh - 560px)); }
+}
+
+/* Tous les boutons/CTA : légèrement plus compacts */
+.btn { padding: 15px 28px; font-size: 14.5px; }
+.nav .btn { padding: 11px 20px; font-size: 13.5px; }
+@media (max-width: 640px) {
+  .hero .btn { padding: 11px 20px; font-size: 13.5px; }
+}
