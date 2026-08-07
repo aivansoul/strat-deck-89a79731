@@ -2880,12 +2880,13 @@ section.sec:has(.demo-stage) { padding: 0; }
    n'occupe plus que ~50 % de la largeur de page
    ============================================================ */
 @media (min-width: 641px) {
-  .hero h1.display { font-size: clamp(40px, 5.6vw, 84px); }
-  .hero .hero-side { font-size: 13px; max-width: 42ch; }
+  .hero h1.display { font-size: clamp(38px, 5vw, 74px); }
+  .hero .hero-stats { font-size: 10.5px; }
+  .hero .hero-side { font-size: 12px; max-width: 44ch; }
   .hero .cta-note { font-size: 11px; gap: 8px; }
   .hero .cta-note svg { width: 15px; height: 15px; }
-  .btn { padding: 11px 22px; font-size: 13px; }
+  .btn { padding: 10px 20px; font-size: 12.5px; }
   .nav .btn { padding: 9px 16px; font-size: 12.5px; }
-  /* plus d'air entre le titre et la rangée de boutons */
-  .hero-foot { margin-top: 84px; padding-top: 34px; }
+  /* large respiration entre les villes et la rangée de boutons */
+  .hero-foot { margin-top: 116px; padding-top: 34px; }
 }
