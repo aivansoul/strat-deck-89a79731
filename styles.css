@@ -2895,3 +2895,8 @@ section.sec:has(.demo-stage) { padding: 0; }
 @media (min-width: 641px) {
   .hero .container-wide { min-height: calc(100svh - 130px); }
 }
+
+/* Hero web : le body text s'aligne sur la colonne « 100 % belge » */
+@media (min-width: 641px) {
+  .hero-foot { grid-template-columns: calc(66.666% - 12px) 1fr; }
+}
