@@ -2890,3 +2890,8 @@ section.sec:has(.demo-stage) { padding: 0; }
   /* large respiration entre les villes et la rangée de boutons */
   .hero-foot { margin-top: 116px; padding-top: 34px; }
 }
+
+/* Hero web : la bande défilante commence sous la fold du premier écran */
+@media (min-width: 641px) {
+  .hero .container-wide { min-height: calc(100svh - 130px); }
+}
